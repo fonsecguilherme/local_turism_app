@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:local_turism/style/style.dart';
 import 'package:local_turism/views/home_page.dart';
 
 void main() {
@@ -13,7 +14,7 @@ class MainApp extends StatelessWidget {
     return MaterialApp(
       title: 'Turismo Alagoas',
       debugShowCheckedModeBanner: false,
-      initialRoute: '/',
+      theme: Style.appTheme,
       routes: {
         '/': (context) => const MyHomePageWidget(),
       },
