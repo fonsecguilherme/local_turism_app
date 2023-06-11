@@ -30,6 +30,7 @@ class City {
   final String name;
   final String mainImage;
   final String cityDescription;
+  final List<String> tags;
   final List<String> cityFacts;
   final List<String> extraImages;
 
@@ -38,6 +39,7 @@ class City {
     required this.name,
     required this.mainImage,
     required this.cityDescription,
+    required this.tags,
     required this.cityFacts,
     required this.extraImages,
   });
@@ -51,13 +53,17 @@ class City {
         name: json["name"],
         mainImage: json["main_image"],
         cityDescription: json["city_description"],
+        tags: List<String>.from(json["tags"].map((x) => x)),
         cityFacts: List<String>.from(json["city_facts"].map((x) => x)),
         extraImages: List<String>.from(json["extra_images"].map((x) => x)),
       );
 
   Map<String, dynamic> toJson() => {
+        "id": id,
         "name": name,
         "main_image": mainImage,
+        "city_description": cityDescription,
+        "tags": List<dynamic>.from(tags.map((x) => x)),
         "city_facts": List<dynamic>.from(cityFacts.map((x) => x)),
         "extra_images": List<dynamic>.from(extraImages.map((x) => x)),
       };
