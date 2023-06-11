@@ -30,7 +30,7 @@ class Style {
 
   static const tagStyle = TextStyle(
     color: AppColors.black,
-    fontSize: 12,
-    fontWeight: FontWeight.w700,
+    fontSize: 14,
+    fontWeight: FontWeight.w500,
   );
 }
