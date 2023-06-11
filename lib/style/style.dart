@@ -27,4 +27,10 @@ class Style {
     fontSize: 12,
     fontWeight: FontWeight.w400,
   );
+
+  static const tagStyle = TextStyle(
+    color: AppColors.black,
+    fontSize: 12,
+    fontWeight: FontWeight.w700,
+  );
 }
