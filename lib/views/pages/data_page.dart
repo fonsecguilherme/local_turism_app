@@ -17,6 +17,7 @@ class _DataPageState extends State<DataPage> {
     List<City> cities = widget.snapshot.data!.cities;
 
     return ListView.builder(
+      shrinkWrap: true,
       itemCount: cities.length,
       itemBuilder: (context, index) => CityCard(
         city: cities[index],
