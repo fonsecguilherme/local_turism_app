@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:local_turism/data/model/city_model.dart';
 import 'package:local_turism/style/style.dart';
+import 'package:local_turism/views/widgets/tag_item.dart';
 
 class CityCard extends StatelessWidget {
   final City city;
@@ -31,11 +32,26 @@ class CityCard extends StatelessWidget {
                 ],
               ),
             ),
+            dots(),
+            TagItemWidget(tagsList: city.tags),
+            const SizedBox(height: 10),
 
             //! TODO: Inserir uma listview com as fotos no widget rectangle picture
             //listViewWidget()
             //rectanglePicture()
           ],
+        ),
+      );
+
+  Widget dots() => Padding(
+        padding: const EdgeInsets.only(
+          top: 18,
+          bottom: 14,
+        ),
+        child: Container(
+          color: Colors.grey,
+          width: 12,
+          height: 12,
         ),
       );
 
