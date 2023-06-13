@@ -3,7 +3,11 @@
       {
          "id": 1,
          "name":"Maceió",
-         "main_image":"https://catracalivre.com.br/wp-content/uploads/sites/11/2016/02/1rd_Praia-de-Ponta-Verde_by_-Wesley-Menegari.jpg",
+         "main_images":[
+         "https://catracalivre.com.br/wp-content/uploads/sites/11/2016/02/1rd_Praia-de-Ponta-Verde_by_-Wesley-Menegari.jpg",
+         "https://catracalivre.com.br/wp-content/uploads/sites/11/2016/02/1rd_Praia-de-Ponta-Verde_by_-Wesley-Menegari.jpg",
+         "https://catracalivre.com.br/wp-content/uploads/sites/11/2016/02/1rd_Praia-de-Ponta-Verde_by_-Wesley-Menegari.jpg"
+      ],
          "city_description": "descrição da frase que fica abaixo do banner",
          "tags": [
             "capital", "praia", "culinaria regional", "areporto"
@@ -25,7 +29,11 @@
       {
          "id": 2,
          "name":"Arapiraca",
-         "main_image":"https://catracalivre.com.br/wp-content/uploads/sites/11/2016/02/1rd_Praia-de-Ponta-Verde_by_-Wesley-Menegari.jpg",
+         "main_images":[
+            "https://catracalivre.com.br/wp-content/uploads/sites/11/2016/02/1rd_Praia-de-Ponta-Verde_by_-Wesley-Menegari.jpg",
+            "https://catracalivre.com.br/wp-content/uploads/sites/11/2016/02/1rd_Praia-de-Ponta-Verde_by_-Wesley-Menegari.jpg",
+            "https://catracalivre.com.br/wp-content/uploads/sites/11/2016/02/1rd_Praia-de-Ponta-Verde_by_-Wesley-Menegari.jpg"
+         ],
          "city_description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
          "tags": [
             "interior", "culinaria regional", "shopping"
