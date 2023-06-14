@@ -21,8 +21,8 @@ class _PhotoCarouselWidgetState extends State<PhotoCarouselWidget> {
   Widget build(BuildContext context) => Padding(
         padding: const EdgeInsets.only(
           top: 25,
-          left: 24,
-          right: 24,
+          left: 12,
+          right: 12,
         ),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
