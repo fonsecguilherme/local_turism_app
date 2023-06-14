@@ -1,18 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:local_turism/commons/app_strings.dart';
 import 'package:local_turism/data/model/city_model.dart';
 import 'package:local_turism/data/repository/city_repository.dart';
 import 'package:local_turism/style/style.dart';
 import 'package:local_turism/views/pages/data_page.dart';
+import 'package:local_turism/views/pages/error_page.dart';
 import 'package:local_turism/views/pages/loading_page.dart';
 
-class MyHomePageWidget extends StatefulWidget {
-  const MyHomePageWidget({super.key});
+class HomePageWidget extends StatefulWidget {
+  const HomePageWidget({super.key});
 
   @override
-  State<MyHomePageWidget> createState() => _MyHomePageWidgetState();
+  State<HomePageWidget> createState() => _HomePageWidgetState();
 }
 
-class _MyHomePageWidgetState extends State<MyHomePageWidget> {
+class _HomePageWidgetState extends State<HomePageWidget> {
   late Future<CityModel?> cities;
   CityRepository repository = CityRepository();
 
@@ -33,7 +35,7 @@ class _MyHomePageWidgetState extends State<MyHomePageWidget> {
             future: cities,
             builder: (context, snapshot) {
               if (snapshot.hasError) {
-                return const Text('Ops! Não consegui carregar os dados!');
+                return const ErrorScreen();
               } else if (snapshot.connectionState == ConnectionState.waiting) {
                 return const LoadingPage();
               } else if (snapshot.hasData) {
@@ -47,7 +49,7 @@ class _MyHomePageWidgetState extends State<MyHomePageWidget> {
 
   Widget _appBar() => AppBar(
         title: const Text(
-          'text',
+          AppStrings.appBarText,
           style: Style.appBarTextStyle,
         ),
         leading: IconButton(
@@ -55,12 +57,6 @@ class _MyHomePageWidgetState extends State<MyHomePageWidget> {
           icon: const Icon(Icons.menu_rounded),
         ),
         centerTitle: true,
-        actions: [
-          IconButton(
-            onPressed: () {},
-            icon: const Icon(Icons.refresh),
-          ),
-        ],
         backgroundColor: Colors.white,
         elevation: 0,
       );

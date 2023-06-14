@@ -12,7 +12,8 @@ class TagItemWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
+    return Container(
+      padding: const EdgeInsets.only(left: 24),
       height: 25,
       width: MediaQuery.of(context).size.width,
       child: ListView.builder(

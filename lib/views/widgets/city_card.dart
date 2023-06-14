@@ -12,20 +12,16 @@ class CityCard extends StatelessWidget {
   });
 
   @override
-  Widget build(BuildContext context) => Padding(
-        padding: const EdgeInsets.only(
-          top: 25,
-          left: 24,
-          right: 24,
-        ),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            PhotoCarouselWidget(city: city),
-            TagItemWidget(tagsList: city.tags),
-            const SizedBox(height: 10),
-            const Divider(),
-          ],
-        ),
+  Widget build(BuildContext context) => Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          PhotoCarouselWidget(city: city),
+          TagItemWidget(tagsList: city.tags),
+          const SizedBox(height: 10),
+          const Padding(
+            padding: EdgeInsets.symmetric(horizontal: 8.0),
+            child: Divider(),
+          ),
+        ],
       );
 }

@@ -18,12 +18,19 @@ class _PhotoCarouselWidgetState extends State<PhotoCarouselWidget> {
   final CarouselController _controller = CarouselController();
 
   @override
-  Widget build(BuildContext context) => Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          carouselWidget(),
-          dotsWidget(),
-        ],
+  Widget build(BuildContext context) => Padding(
+        padding: const EdgeInsets.only(
+          top: 25,
+          left: 24,
+          right: 24,
+        ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            carouselWidget(),
+            dotsWidget(),
+          ],
+        ),
       );
 
   Widget carouselWidget() => CarouselSlider.builder(
@@ -78,6 +85,7 @@ class _PhotoCarouselWidgetState extends State<PhotoCarouselWidget> {
 
   Widget photoText() => Padding(
         padding: const EdgeInsets.only(
+          top: 4,
           bottom: 29,
           left: 21,
         ),
