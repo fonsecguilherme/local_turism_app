@@ -8,6 +8,7 @@ class Style {
         color: AppColors.black,
       ),
     ),
+    fontFamily: 'Poppins'
   );
 
   static const appBarTextStyle = TextStyle(
@@ -31,6 +32,6 @@ class Style {
   static const tagStyle = TextStyle(
     color: AppColors.black,
     fontSize: 14,
-    fontWeight: FontWeight.w500,
+    fontWeight: FontWeight.w400,
   );
 }
