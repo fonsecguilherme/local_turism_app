@@ -8,7 +8,7 @@ class Style {
         color: AppColors.black,
       ),
     ),
-    fontFamily: 'Poppins'
+    fontFamily: 'Poppins',
   );
 
   static const appBarTextStyle = TextStyle(
@@ -33,5 +33,11 @@ class Style {
     color: AppColors.black,
     fontSize: 14,
     fontWeight: FontWeight.w400,
+  );
+
+  static const textStyleBlackFont = TextStyle(
+    color: AppColors.black,
+    fontSize: 16,
+    fontWeight: FontWeight.w500,
   );
 }
