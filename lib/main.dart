@@ -1,14 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:local_turism/data/repository/city_repository.dart';
 import 'package:local_turism/style/style.dart';
 import 'package:local_turism/views/pages/error_page.dart';
 import 'package:local_turism/views/pages/home_page.dart';
 
 void main() {
-  runApp(const MainApp());
+  runApp(MainApp());
 }
 
 class MainApp extends StatelessWidget {
-  const MainApp({super.key});
+  MainApp({super.key});
+
+  CityRepository cityRepository = CityRepository();
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +20,7 @@ class MainApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: Style.appTheme,
       routes: {
-        '/': (context) => const HomePageWidget(),
+        '/': (context) => HomePageWidget(repository: cityRepository),
         '/errorScreen': (context) => const ErrorScreen(),
       },
     );

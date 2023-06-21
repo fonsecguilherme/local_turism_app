@@ -50,15 +50,15 @@ class _PhotoCarouselWidgetState extends State<PhotoCarouselWidget> {
           return Stack(
             fit: StackFit.expand,
             children: [
-              photo(),
+              photo(index),
               photoText(),
             ],
           );
         },
       );
 
-  Widget photo() => Image.network(
-        widget.city.mainImages.first,
+  Widget photo(int index) => Image.network(
+        widget.city.mainImages[index],
         fit: BoxFit.cover,
       );
 

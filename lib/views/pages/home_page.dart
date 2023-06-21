@@ -8,7 +8,10 @@ import 'package:local_turism/views/pages/error_page.dart';
 import 'package:local_turism/views/pages/loading_page.dart';
 
 class HomePageWidget extends StatefulWidget {
-  const HomePageWidget({super.key});
+  final CityRepository repository;
+  //! botei pra pegar por construtor igual você comentou
+
+  const HomePageWidget({super.key, required this.repository});
 
   @override
   State<HomePageWidget> createState() => _HomePageWidgetState();
@@ -16,12 +19,11 @@ class HomePageWidget extends StatefulWidget {
 
 class _HomePageWidgetState extends State<HomePageWidget> {
   late Future<CityModel?> cities;
-  CityRepository repository = CityRepository();
 
   @override
   void initState() {
     super.initState();
-    cities = repository.getAll();
+    cities = widget.repository.getAll();
   }
 
   @override
