@@ -1,10 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:local_turism/commons/app_strings.dart';
+import 'package:local_turism/data/model/city_model.dart';
+import 'package:local_turism/data/repository/city_repository.dart';
 import 'package:local_turism/views/pages/home_page.dart';
+import 'package:mocktail/mocktail.dart';
+
+class MockCityRepository extends Mock implements CityRepository {}
+
+late CityRepository cityRepository;
 
 void main() {
+  setUp(() {
+    cityRepository = MockCityRepository();
+  });
+
   testWidgets('Find appBar widgets', (tester) async {
+    when(() => cityRepository.getAll()).thenAnswer((_) => Future.value());
+
     await _createWidget(tester);
 
     expect(find.text(AppStrings.appBarText), findsOneWidget);
@@ -13,14 +26,13 @@ void main() {
   });
 
   //! TODO: fazer os testes caso o retorno da api seja diferente de 200, retornar a tela de erro, se a conexão for waiting,mostrar widget de loadings
-
-  testWidgets('', (tester) async {});
 }
 
 Future<void> _createWidget(WidgetTester tester) async {
   await tester.pumpWidget(
-    const MaterialApp(
-      home: HomePageWidget(),
+    MaterialApp(
+      home: HomePageWidget(repository: cityRepository),
     ),
   );
+  await tester.pump();
 }
