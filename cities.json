@@ -2,6 +2,7 @@
    "cities":[
       {
          "id": 1,
+         "city_key": "maceió",
          "name":"Maceió",
          "main_images":[
          "https://catracalivre.com.br/wp-content/uploads/sites/11/2016/02/1rd_Praia-de-Ponta-Verde_by_-Wesley-Menegari.jpg",
@@ -28,6 +29,7 @@
 
       {
          "id": 2,
+         "city_key": "arapiraca",
          "name":"Arapiraca",
          "main_images":[
             "https://catracalivre.com.br/wp-content/uploads/sites/11/2016/02/1rd_Praia-de-Ponta-Verde_by_-Wesley-Menegari.jpg",
