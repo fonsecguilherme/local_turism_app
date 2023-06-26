@@ -20,6 +20,7 @@ class _DataPageState extends State<DataPage> {
       shrinkWrap: true,
       itemCount: cities.length,
       itemBuilder: (context, index) => CityCard(
+        key: Key(cities[index].cityKey),
         city: cities[index],
       ),
     );
