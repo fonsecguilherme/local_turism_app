@@ -12,9 +12,12 @@ class DataPage extends StatefulWidget {
 }
 
 class _DataPageState extends State<DataPage> {
+  static const Key listViewKey = Key('listViewKey');
+
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
+      key: listViewKey,
       shrinkWrap: true,
       itemCount: widget.cities.length,
       itemBuilder: (context, index) => CityCard(
