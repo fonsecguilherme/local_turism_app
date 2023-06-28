@@ -3,9 +3,9 @@ import 'package:local_turism/data/model/city_model.dart';
 import 'package:local_turism/views/widgets/city_card.dart';
 
 class DataPage extends StatefulWidget {
-  final AsyncSnapshot<CityModel?> snapshot;
+  final List<City> cities;
 
-  const DataPage({super.key, required this.snapshot});
+  const DataPage({super.key, required this.cities});
 
   @override
   State<DataPage> createState() => _DataPageState();
@@ -14,14 +14,12 @@ class DataPage extends StatefulWidget {
 class _DataPageState extends State<DataPage> {
   @override
   Widget build(BuildContext context) {
-    List<City> cities = widget.snapshot.data!.cities;
-
     return ListView.builder(
       shrinkWrap: true,
-      itemCount: cities.length,
+      itemCount: widget.cities.length,
       itemBuilder: (context, index) => CityCard(
-        key: Key(cities[index].cityKey),
-        city: cities[index],
+        key: Key(widget.cities[index].cityKey),
+        city: widget.cities[index],
       ),
     );
   }

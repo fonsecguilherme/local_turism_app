@@ -9,7 +9,6 @@ import 'package:local_turism/views/pages/loading_page.dart';
 
 class HomePageWidget extends StatefulWidget {
   final CityRepository repository;
-  //! botei pra pegar por construtor igual você comentou
 
   const HomePageWidget({super.key, required this.repository});
 
@@ -41,7 +40,8 @@ class _HomePageWidgetState extends State<HomePageWidget> {
               } else if (snapshot.connectionState == ConnectionState.waiting) {
                 return const LoadingPage();
               } else if (snapshot.hasData) {
-                return DataPage(snapshot: snapshot);
+                final citiesList = snapshot.data!.cities;
+                return DataPage(cities: citiesList);
               }
               return const SizedBox();
             },
