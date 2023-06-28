@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:local_turism/data/model/city_model.dart';
 import 'package:local_turism/data/repository/city_repository.dart';
-import 'package:local_turism/views/pages/home_page.dart';
+import 'package:local_turism/views/pages/data_page.dart';
+import 'package:local_turism/views/widgets/city_card.dart';
 import 'package:mocktail/mocktail.dart';
+import 'package:network_image_mock/network_image_mock.dart';
 
 class MockCityRepository extends Mock implements CityRepository {}
 
@@ -48,17 +50,27 @@ void main() {
   testWidgets('Find city card widgets', (tester) async {
     when(() => cityRepository.getAll()).thenAnswer((_) => Future.value());
 
-    await _createWidget(tester);
+    await mockNetworkImagesFor(() => _createWidget(tester));
 
-    
+    final listViewWidget = find.byKey(const Key('listViewKey'));
+
+    expect(listViewWidget, findsOneWidget);
+
+    expect(find.byType(CityCard), findsNWidgets(2));
+
+    final maceioKey = find.byKey(const Key('maceió'));
+    final arapiracaKey = find.byKey(const Key('arapiraca'));
+
+    expect(maceioKey, findsOneWidget);
+    expect(arapiracaKey, findsOneWidget);
   });
 }
 
 Future<void> _createWidget(WidgetTester tester) async {
   await tester.pumpWidget(
     MaterialApp(
-      home: HomePageWidget(
-        repository: cityRepository,
+      home: DataPage(
+        cities: cities,
       ),
     ),
   );
