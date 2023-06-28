@@ -8,6 +8,7 @@ import 'package:local_turism/views/pages/error_page.dart';
 import 'package:local_turism/views/pages/home_page.dart';
 import 'package:local_turism/views/pages/loading_page.dart';
 import 'package:mocktail/mocktail.dart';
+import 'package:network_image_mock/network_image_mock.dart';
 
 class MockCityRepository extends Mock implements CityRepository {}
 
@@ -28,21 +29,18 @@ void main() {
   });
 
   testWidgets('Find data page widget', (tester) async {
+    final cityModel = CityModel(cities: cities);
+
     when(() => cityRepository.getAll()).thenAnswer(
-      (_) async => Future.value(
-          //CityModel(cities: cities),
-          ),
+      (_) => Future.value(cityModel),
     );
 
-    await tester.pumpWidget(
-      MaterialApp(
-        home: DataPage(
-          cities: cities,
-        ),
-      ),
-    );
+    await mockNetworkImagesFor(() => _createWidget(tester));
 
-    final dataWidget = find.byType(DataPage, skipOffstage: false);
+    final dataWidget = find.byType(DataPage);
+
+    await tester.pump();
+
     expect(dataWidget, findsOneWidget);
   });
 
@@ -56,7 +54,9 @@ void main() {
       ),
     );
 
-    expect(find.byType(LoadingPage, skipOffstage: false), findsOneWidget);
+    final loadingWidget = find.byType(LoadingPage);
+
+    expect(loadingWidget, findsOneWidget);
   });
 
   testWidgets('Test error screen widget', (tester) async {
