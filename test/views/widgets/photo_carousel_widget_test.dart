@@ -13,6 +13,28 @@ void main() {
     expect(find.text('Maceió'), findsOneWidget);
     expect(find.text('descrição'), findsOneWidget);
   });
+
+  testWidgets('Find next image when swipe to left', (tester) async {
+    await mockNetworkImagesFor(() => _createWidget(tester));
+
+    expect(find.image(NetworkImage(_city.mainImages.first)), findsOneWidget);
+
+    await tester.drag(find.byType(Stack), const Offset(-500, 0));
+
+    await tester.pumpAndSettle();
+    await tester.pump();
+
+    expect(find.image(NetworkImage(_city.mainImages.elementAt(1))),
+        findsOneWidget);
+
+    await tester.drag(find.byType(Stack), const Offset(-500, 0));
+
+    await tester.pumpAndSettle();
+    await tester.pump();
+
+    expect(find.image(NetworkImage(_city.mainImages.elementAt(2))),
+        findsOneWidget);
+  });
 }
 
 Future<void> _createWidget(WidgetTester tester) async {
