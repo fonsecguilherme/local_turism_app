@@ -15,6 +15,7 @@ class CityCard extends StatelessWidget {
   Widget build(BuildContext context) => Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
+          title(),
           PhotoCarouselWidget(city: city),
           TagItemWidget(tagsList: city.tags),
           const SizedBox(height: 10),
@@ -23,5 +24,16 @@ class CityCard extends StatelessWidget {
             child: Divider(),
           ),
         ],
+      );
+
+  Widget title() => Padding(
+        padding: const EdgeInsets.only(
+          top: 25,
+          left: 12,
+        ),
+        child: Text(
+          city.title,
+          style: const TextStyle(fontSize: 22, fontWeight: FontWeight.w600),
+        ),
       );
 }
