@@ -20,30 +20,32 @@ class TagItemWidget extends StatelessWidget {
         itemCount: tagsList.length,
         scrollDirection: Axis.horizontal,
         itemBuilder: (context, index) {
-          return Padding(
-            padding: const EdgeInsets.only(right: 12.0),
-            child: Container(
-              height: 22,
-              decoration: const BoxDecoration(
-                color: AppColors.grey,
-                borderRadius: BorderRadiusDirectional.all(
-                  Radius.circular(8),
-                ),
-              ),
-              child: Center(
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 8),
-                  child: Text(
-                    tagsList[index],
-                    textAlign: TextAlign.center,
-                    style: Style.tagStyle,
-                  ),
-                ),
-              ),
-            ),
-          );
+          return item(tagsList, index);
         },
       ),
     );
   }
+
+  Widget item(List<String> list, int index) => Padding(
+        padding: const EdgeInsets.only(right: 12.0),
+        child: Container(
+          height: 22,
+          decoration: const BoxDecoration(
+            color: AppColors.grey,
+            borderRadius: BorderRadiusDirectional.all(
+              Radius.circular(8),
+            ),
+          ),
+          child: Center(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 8),
+              child: Text(
+                tagsList[index],
+                textAlign: TextAlign.center,
+                style: Style.tagStyle,
+              ),
+            ),
+          ),
+        ),
+      );
 }
