@@ -28,6 +28,7 @@ class CityModel {
 class City {
   final int id;
   final String cityKey;
+  final String title;
   final String name;
   final List<String> mainImages;
   final String cityDescription;
@@ -38,6 +39,7 @@ class City {
   City({
     required this.id,
     required this.cityKey,
+    required this.title,
     required this.name,
     required this.mainImages,
     required this.cityDescription,
@@ -53,6 +55,7 @@ class City {
   factory City.fromJson(Map<String, dynamic> json) => City(
         id: json["id"],
         cityKey: json["city_key"],
+        title: json["title"],
         name: json["name"],
         mainImages: List<String>.from(json["main_images"].map((x) => x)),
         cityDescription: json["city_description"],
@@ -64,6 +67,7 @@ class City {
   Map<String, dynamic> toJson() => {
         "id": id,
         "city_key": cityKey,
+        "title": title,
         "name": name,
         "main_images": List<dynamic>.from(mainImages.map((x) => x)),
         "city_description": cityDescription,
