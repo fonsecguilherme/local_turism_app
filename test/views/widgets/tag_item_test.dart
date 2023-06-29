@@ -9,13 +9,11 @@ void main() {
     final tags = find.byType(ListView);
     expect(tags, findsOneWidget);
 
-    expect(find.text('tag um'), findsOneWidget);
-    expect(find.text('tag dois'), findsOneWidget);
-    expect(find.text('tag três'), findsOneWidget);
-    expect(find.text('tag quatro'), findsOneWidget);
+    expect(find.text(_tagsList.first), findsOneWidget);
+    expect(find.text(_tagsList.elementAt(1)), findsOneWidget);
+    expect(find.text(_tagsList.elementAt(2)), findsOneWidget);
+    expect(find.text(_tagsList.last), findsOneWidget);
   });
-
-  //! Create swipe widget test
 }
 
 Future<void> _createWidget(WidgetTester tester) async {
