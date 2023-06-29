@@ -1,5 +1,5 @@
-import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:flutter/material.dart';
 import 'package:local_turism/data/model/city_model.dart';
 import 'package:local_turism/style/app_colors.dart';
 import 'package:local_turism/style/style.dart';
@@ -20,7 +20,6 @@ class _PhotoCarouselWidgetState extends State<PhotoCarouselWidget> {
   @override
   Widget build(BuildContext context) => Padding(
         padding: const EdgeInsets.only(
-          top: 25,
           left: 12,
           right: 12,
         ),
