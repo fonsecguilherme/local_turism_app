@@ -3,6 +3,7 @@
       {
          "id": 1,
          "city_key": "maceió",
+         "title":  "Maceió, minha sereia!",
          "name":"Maceió",
          "main_images":[
          "https://catracalivre.com.br/wp-content/uploads/sites/11/2016/02/1rd_Praia-de-Ponta-Verde_by_-Wesley-Menegari.jpg",
@@ -30,6 +31,7 @@
       {
          "id": 2,
          "city_key": "arapiraca",
+         "title":  "A princesinha do agreste",
          "name":"Arapiraca",
          "main_images":[
             "https://catracalivre.com.br/wp-content/uploads/sites/11/2016/02/1rd_Praia-de-Ponta-Verde_by_-Wesley-Menegari.jpg",
