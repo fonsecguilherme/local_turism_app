@@ -11,7 +11,7 @@ class MockCityRepository extends Mock implements CityRepository {}
 
 late MockCityRepository cityRepository;
 
-List<City> cities = [
+List<City> _cities = [
   City(
     id: 1,
     cityKey: 'maceió',
@@ -70,7 +70,7 @@ Future<void> _createWidget(WidgetTester tester) async {
   await tester.pumpWidget(
     MaterialApp(
       home: DataPage(
-        cities: cities,
+        cities: _cities,
       ),
     ),
   );

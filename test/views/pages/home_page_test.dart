@@ -29,7 +29,7 @@ void main() {
   });
 
   testWidgets('Find data page widget', (tester) async {
-    final cityModel = CityModel(cities: cities);
+    final cityModel = CityModel(cities: _cities);
 
     when(() => cityRepository.getAll()).thenAnswer(
       (_) => Future.value(cityModel),
@@ -85,7 +85,7 @@ Future<void> _createWidget(WidgetTester tester) async {
   await tester.pump();
 }
 
-final List<City> cities = [
+final List<City> _cities = [
   City(
     id: 1,
     cityKey: '',
