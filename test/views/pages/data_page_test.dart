@@ -15,6 +15,7 @@ List<City> _cities = [
   City(
     id: 1,
     cityKey: 'maceió',
+    title: '',
     name: 'Maceió',
     mainImages: [
       "https://catracalivre.com.br/wp-content/uploads/sites/11/2016/02/1rd_Praia-de-Ponta-Verde_by_-Wesley-Menegari.jpg",
@@ -29,6 +30,7 @@ List<City> _cities = [
   City(
     id: 2,
     cityKey: 'arapiraca',
+    title: '',
     name: 'Arapi',
     mainImages: [
       "https://catracalivre.com.br/wp-content/uploads/sites/11/2016/02/1rd_Praia-de-Ponta-Verde_by_-Wesley-Menegari.jpg",

@@ -51,6 +51,7 @@ Future<void> _createWidget(WidgetTester tester) async {
 City _city = City(
   id: 1,
   cityKey: 'maceió',
+  title: '',
   name: 'Maceió',
   mainImages: [
     "https://catracalivre.com.br/wp-content/uploads/sites/11/2016/02/1rd_Praia-de-Ponta-Verde_by_-Wesley-Menegari.jpg",
