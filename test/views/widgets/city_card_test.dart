@@ -12,11 +12,15 @@ void main() {
       (tester) async {
     await mockNetworkImagesFor(() => _createWidget(tester));
 
+    final titleWidget = find.text(_city.title);
     final carouselWidget = find.byType(PhotoCarouselWidget);
     final tagsWidget = find.byType(TagItemWidget);
+    final dividerWidget = find.byType(Divider);
 
+    expect(titleWidget, findsOneWidget);
     expect(carouselWidget, findsOneWidget);
     expect(tagsWidget, findsOneWidget);
+    expect(dividerWidget, findsOneWidget);
   });
 }
 
@@ -31,6 +35,7 @@ Future<void> _createWidget(WidgetTester tester) async {
 City _city = City(
   id: 1,
   cityKey: 'maceió',
+  title: 'Maceió, minha sereia!',
   name: 'Maceió',
   mainImages: [
     "https://catracalivre.com.br/wp-content/uploads/sites/11/2016/02/1rd_Praia-de-Ponta-Verde_by_-Wesley-Menegari.jpg",
