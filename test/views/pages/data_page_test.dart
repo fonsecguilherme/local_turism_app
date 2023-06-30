@@ -1,15 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:local_turism/data/model/city_model.dart';
-import 'package:local_turism/data/repository/city_repository.dart';
 import 'package:local_turism/views/pages/data_page.dart';
 import 'package:local_turism/views/widgets/city_card.dart';
-import 'package:mocktail/mocktail.dart';
 import 'package:network_image_mock/network_image_mock.dart';
-
-class MockCityRepository extends Mock implements CityRepository {}
-
-late MockCityRepository cityRepository;
 
 List<City> _cities = [
   City(
@@ -45,13 +39,7 @@ List<City> _cities = [
 ];
 
 void main() {
-  setUp(() {
-    cityRepository = MockCityRepository();
-  });
-
   testWidgets('Find city card widgets', (tester) async {
-    when(() => cityRepository.getAll()).thenAnswer((_) => Future.value());
-
     await mockNetworkImagesFor(() => _createWidget(tester));
 
     final listViewWidget = find.byKey(const Key('listViewKey'));
