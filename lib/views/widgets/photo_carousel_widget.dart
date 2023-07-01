@@ -46,12 +46,15 @@ class _PhotoCarouselWidgetState extends State<PhotoCarouselWidget> {
           },
         ),
         itemBuilder: (context, index, realIndex) {
-          return Stack(
-            fit: StackFit.expand,
-            children: [
-              photo(index),
-              photoText(),
-            ],
+          return GestureDetector(
+            onTap: () {},
+            child: Stack(
+              fit: StackFit.expand,
+              children: [
+                photo(index),
+                photoText(),
+              ],
+            ),
           );
         },
       );
