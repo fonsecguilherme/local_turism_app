@@ -11,7 +11,7 @@ void main() {
 class MainApp extends StatelessWidget {
   MainApp({super.key});
 
-  CityRepository cityRepository = CityRepository();
+  final CityRepository cityRepository = CityRepository();
 
   @override
   Widget build(BuildContext context) {
