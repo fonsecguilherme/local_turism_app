@@ -63,12 +63,12 @@ void main() {
     when(() => cityRepository.getAll()).thenThrow(Exception());
 
     await tester.pumpWidget(
-      const MaterialApp(
-        home: ErrorScreen(),
+      MaterialApp(
+        home: ErrorPage(repository: cityRepository),
       ),
     );
 
-    final errorWidget = find.byType(ErrorScreen);
+    final errorWidget = find.byType(ErrorPage);
 
     expect(errorWidget, findsOneWidget);
   });
