@@ -21,7 +21,7 @@ class MainApp extends StatelessWidget {
       theme: Style.appTheme,
       routes: {
         '/': (context) => HomePageWidget(repository: cityRepository),
-        '/errorScreen': (context) => const ErrorScreen(),
+        '/errorPage': (context) => ErrorPage(repository: cityRepository),
       },
     );
   }

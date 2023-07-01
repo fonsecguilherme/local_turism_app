@@ -36,7 +36,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
             future: cities,
             builder: (context, snapshot) {
               if (snapshot.hasError) {
-                return const ErrorScreen();
+                return ErrorPage(repository: widget.repository);
               } else if (snapshot.connectionState == ConnectionState.waiting) {
                 return const LoadingPage();
               } else if (snapshot.hasData) {
