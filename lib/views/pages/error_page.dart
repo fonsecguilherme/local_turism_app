@@ -2,16 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:local_turism/commons/app_strings.dart';
 import 'package:local_turism/data/repository/city_repository.dart';
 
-class ErrorScreen extends StatefulWidget {
-  const ErrorScreen({super.key});
+class ErrorPage extends StatefulWidget {
+  final CityRepository repository;
+
+  const ErrorPage({super.key, required this.repository});
 
   @override
-  State<ErrorScreen> createState() => _ErrorScreenState();
+  State<ErrorPage> createState() => _ErrorPageState();
 }
 
-class _ErrorScreenState extends State<ErrorScreen> {
-  CityRepository repository = CityRepository();
-
+class _ErrorPageState extends State<ErrorPage> {
   @override
   Widget build(BuildContext context) {
     return Center(
@@ -23,7 +23,7 @@ class _ErrorScreenState extends State<ErrorScreen> {
           ElevatedButton(
             onPressed: () {
               setState(() {
-                repository.getAll();
+                widget.repository.getAll();
                 Navigator.pushReplacementNamed(context, '/');
               });
             },
