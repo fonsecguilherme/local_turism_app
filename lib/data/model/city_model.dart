@@ -33,7 +33,7 @@ class City {
   final List<String> mainImages;
   final String cityDescription;
   final List<String> tags;
-  final List<String> cityFacts;
+  final List<CityFact> cityFacts;
   final List<String> extraImages;
 
   City({
@@ -60,7 +60,8 @@ class City {
         mainImages: List<String>.from(json["main_images"].map((x) => x)),
         cityDescription: json["city_description"],
         tags: List<String>.from(json["tags"].map((x) => x)),
-        cityFacts: List<String>.from(json["city_facts"].map((x) => x)),
+        cityFacts: List<CityFact>.from(
+            json["city_facts"].map((x) => CityFact.fromJson(x))),
         extraImages: List<String>.from(json["extra_images"].map((x) => x)),
       );
 
@@ -72,7 +73,36 @@ class City {
         "main_images": List<dynamic>.from(mainImages.map((x) => x)),
         "city_description": cityDescription,
         "tags": List<dynamic>.from(tags.map((x) => x)),
-        "city_facts": List<dynamic>.from(cityFacts.map((x) => x)),
+        "city_facts": List<dynamic>.from(cityFacts.map((x) => x.toJson())),
         "extra_images": List<dynamic>.from(extraImages.map((x) => x)),
+      };
+}
+
+class CityFact {
+  final String title;
+  final String description;
+  final String image;
+
+  CityFact({
+    required this.title,
+    required this.description,
+    required this.image,
+  });
+
+  factory CityFact.fromRawJson(String str) =>
+      CityFact.fromJson(json.decode(str));
+
+  String toRawJson() => json.encode(toJson());
+
+  factory CityFact.fromJson(Map<String, dynamic> json) => CityFact(
+        title: json["title"],
+        description: json["description"],
+        image: json["image"],
+      );
+
+  Map<String, dynamic> toJson() => {
+        "title": title,
+        "description": description,
+        "image": image,
       };
 }
