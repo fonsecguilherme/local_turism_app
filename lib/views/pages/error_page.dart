@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:local_turism/commons/app_strings.dart';
 import 'package:local_turism/data/repository/city_repository.dart';
 
@@ -24,7 +25,7 @@ class _ErrorPageState extends State<ErrorPage> {
             onPressed: () {
               setState(() {
                 widget.repository.getAll();
-                Navigator.pushReplacementNamed(context, '/');
+                context.goNamed('/');
               });
             },
             style: ElevatedButton.styleFrom(
