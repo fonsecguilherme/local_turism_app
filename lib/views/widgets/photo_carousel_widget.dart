@@ -1,5 +1,6 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:local_turism/data/model/city_model.dart';
 import 'package:local_turism/style/app_colors.dart';
 import 'package:local_turism/style/style.dart';
@@ -47,7 +48,10 @@ class _PhotoCarouselWidgetState extends State<PhotoCarouselWidget> {
         ),
         itemBuilder: (context, index, realIndex) {
           return GestureDetector(
-            onTap: () {},
+            onTap: () {
+              City city = widget.city;
+              context.goNamed('detailScreen', extra: city);
+            },
             child: Stack(
               fit: StackFit.expand,
               children: [
