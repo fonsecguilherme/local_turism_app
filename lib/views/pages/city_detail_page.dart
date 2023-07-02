@@ -11,18 +11,61 @@ class CityDetailPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        appBar: AppBar(
-          title: Text(
-            city.name,
-            style: Style.appBarTextStyle,
+        appBar: PreferredSize(
+          preferredSize: const Size.fromHeight(kToolbarHeight),
+          child: _appBar(),
+        ),
+        body: Padding(
+          padding: const EdgeInsets.only(
+            left: 24,
+            right: 24,
           ),
-          centerTitle: true,
-          backgroundColor: Colors.white,
-          elevation: 0,
+          child: Column(
+            children: [
+              Expanded(
+                child: ListView.builder(
+                  itemCount: city.cityFacts.length,
+                  itemBuilder: (context, index) => cityFact(
+                    city.cityFacts[index],
+                  ),
+                ),
+              ),
+            ],
+          ),
         ),
-        body: Container(
-          color: Colors.amber,
+      ),
+    );
+  }
+
+  Widget _appBar() => AppBar(
+        title: Text(
+          city.name,
+          style: Style.appBarTextStyle,
         ),
+        centerTitle: true,
+        backgroundColor: Colors.white,
+        elevation: 0,
+      );
+
+  Widget cityFact(CityFact fact) {
+    return SizedBox(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            fact.title,
+            style: Style.cityDetailTitleStyleBold,
+          ),
+          Container(
+            height: 340,
+            color: Colors.amber,
+          ),
+          //Text(fact.image),
+          Text(
+            fact.description,
+            style: Style.cityDetailDescriptionStyle,
+          ),
+        ],
       ),
     );
   }
