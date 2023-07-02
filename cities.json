@@ -8,7 +8,9 @@
          "main_images":[
          "https://catracalivre.com.br/wp-content/uploads/sites/11/2016/02/1rd_Praia-de-Ponta-Verde_by_-Wesley-Menegari.jpg",
          "https://images.unsplash.com/photo-1632415978225-ffe0d0f2703e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=435&q=80",
-         "https://catracalivre.com.br/wp-content/uploads/sites/11/2016/02/1rd_Praia-de-Ponta-Verde_by_-Wesley-Menegari.jpg"
+         "http://experimentemaceio.com.br/wp-content/uploads/2022/05/BALANCO-SANTA-AMELIA.jpeg",
+         "http://experimentemaceio.com.br/wp-content/uploads/2022/06/30-12-21-Maceio-e-Massa-Eu-Amo-MCZ-Mirante-Jatiuca-SEMTEL-Foto-Maivan-Fernandez-7.jpg",
+         "https://www.salinas.com.br/uploads/blog/images/5f85c4e22dfed.a-noite-em-maceio.jpg "
       ],
          "city_description": "descrição da frase que fica abaixo do banner",
          "tags": [
@@ -16,29 +18,29 @@
          ],
          "city_facts":[
             {
-               "title":"Onde ir?",
-               "description":"descrição básica",
-               "image": "https://images.unsplash.com/photo-1632415978225-ffe0d0f2703e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=435&q=80"
+               "title":"Praia de Pajuçara",
+               "description":"Urbanizada, é uma das enseadas mais movimentadas e bem estruturadas da cidade. Conta com jardins, quadras, ciclovia, pista de corrida e wifi gratuito (estrutura também disponível na Ponta Verde e Jatiúca). É uma opção ideal para os que desejam aproveitar um belo dia na praia, sem abrir mão da facilidade de acesso aos melhores hotéis, restaurantes e atrativos da cidade, como as feiras de artesanato e quiosques de tapioca, iguaria típica de Alagoas. A praia oferece uma boa faixa de areia dourada e fofa e um mar é calmo, de águas cristalinas. O grande destaque são as piscinas naturais a 2km da costa. O passeio até lá é realizado durante a maré baixa em belas jangadas tradicionais que ficam à espera dos turistas ao lado da Balança da Pajuçara.",
+               "image": "https://maceioatlantic.com/wp-content/uploads/elementor/thumbs/praia_pajucara-pbwfq8usb3i43cif18kc20ev8wj0ewc7k0op1nbudw.jpg"
 
             },
       
             {
-               "title":"Onde ir?2",
-               "description":"descrição básica",
+               "title":"Beirro histórico de Jaraguá",
+               "description":"O principal bairro histórico de Maceió é o Jaraguá. O local guarda as memórias do surgimento da cidade, contadas em ruas, praças e na arquitetura dos prédios. Considerado um museu a céu aberto, o bairro propõe uma deliciosa imersão na história da região. Basta caminhar pelas ruas de paralelepípedos para se vislumbrar com a arquitetura dos antigos armazéns de algodão e açúcar, com muitos deles atualmente transformados em espaços culturais ou comerciais.",
                "image":"https://catracalivre.com.br/wp-content/uploads/sites/11/2016/02/1rd_Praia-de-Ponta-Verde_by_-Wesley-Menegari.jpg"
             },
             {
-               "title":"Onde ir?3",
-               "description":"descrição básica",
-               "image":"link da foto"
+               "title":"Gastronomia",
+               "description":"Maceió é uma cidade onde a hospitalidade começa na cozinha, seja com panelas cheias de sururu, reconhecido como Patrimônio Imaterial de Alagoas, ou nos elegantes restaurantes premiados nacionalmente que servem sabores do mar, da lagoa e do sertão de Alagoas. Além dos pratos com os frutos do mar, pratos de origem indígena e africana também fazem sucesso na nossa querida Maceió. Tapioca, arroz doce, cuscuz de milho, macaxeira com carne de sol, pamonha, mugunzá e muitos outros pratos são bastante procurados e facilmente encontrados por aqui.",
+               "image":"https://tnh1-cdn3.cworks.cloud/fileadmin/_processed_/e/d/csm_Gastronomia-Arquivo_Semtur_5996d2451c.jpg"
             }
          ],
          "extra_images":[
-            "link image",
-            "link image",
-            "link image",
-            "link image",
-            "link image"
+            "http://experimentemaceio.com.br/wp-content/uploads/2022/05/17-11-2021-Artesanato-Pajucara-Turismo-SEMTEL-Por-Emile-Valoes_3.jpg",
+            "http://experimentemaceio.com.br/wp-content/uploads/2022/05/18-12-21-cortejo-natal-dos-Folguedos-natal-de-todos-Nos-FMAC-fotos-Barbara-Wanderley-65.jpg",
+            "http://experimentemaceio.com.br/wp-content/uploads/2022/06/Mirante-Dr.-Hugo-Lima-Cruz-das-Almas-SEMTEL-TURISMO-Por-Maivan-Fernandez_16-scaled.jpg",
+            "http://experimentemaceio.com.br/wp-content/uploads/2022/05/Foto-Davysson-Mendes-06-01-2022-Cadeira-de-Praia-Maceio-e-Massa-SEMTEL-3.jpg",
+            "http://experimentemaceio.com.br/wp-content/uploads/2022/06/Museu-do-Comercio-e-Museu-da-Tecnologia-1.jpg"
          ]
       },
 
@@ -48,31 +50,38 @@
          "title":  "A princesinha do agreste",
          "name":"Arapiraca",
          "main_images":[
-            "https://catracalivre.com.br/wp-content/uploads/sites/11/2016/02/1rd_Praia-de-Ponta-Verde_by_-Wesley-Menegari.jpg",
-            "https://catracalivre.com.br/wp-content/uploads/sites/11/2016/02/1rd_Praia-de-Ponta-Verde_by_-Wesley-Menegari.jpg",
-            "https://catracalivre.com.br/wp-content/uploads/sites/11/2016/02/1rd_Praia-de-Ponta-Verde_by_-Wesley-Menegari.jpg"
+            "https://web.arapiraca.al.gov.br/wp-content/uploads/2022/08/WhatsAppImage20220808at11.09.57.jpeg",
+            "https://web.arapiraca.al.gov.br/wp-content/uploads/2023/06/WhatsAppImage20230630at17.19.24-1000x720.jpeg",
+            "https://web.arapiraca.al.gov.br/wp-content/uploads/2019/03/fonteluninosa-1-1024x768.jpeg"
          ],
-         "city_description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+         "city_description": "O estado todo passa por aqui!",
          "tags": [
             "interior", "culinaria regional", "shopping"
          ],
          "city_facts":[
             {
-               "title":"Onde ir arapiraca?",
-               "description":"descrição básica",
-               "image": "https://images.unsplash.com/photo-1632415978225-ffe0d0f2703e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=435&q=80"
+               "title":"Memórial Árvore Centenária de Arapiraca",
+               "description":"Localizada na Serra dos Ferreiras, zona rural. Da família das Febaceae, uma espécie de Angico branco, foi tombada em 2007 como Patrimônio Natural do Município. Durante sua peregrinação, no século IX, Manoel André, quando esteve em Riacho Doce, descansou à sombra de um exemplar da árvore e disse: “aquela sombra de Arapiraca seria, por ora, a sua morada”. É assim nasceu o município. O memorial tem a função de recontar a história do início da civilização do município. Este é o único exemplar de Arapiraca que possui mais de cem anos.",
+               "image": "https://web.arapiraca.al.gov.br/wp-content/uploads/2016/02/arvore.jpg"
 
             },
       
             {
-               "title":"Onde ir?2",
-               "description":"descrição básica",
-               "image":"https://catracalivre.com.br/wp-content/uploads/sites/11/2016/02/1rd_Praia-de-Ponta-Verde_by_-Wesley-Menegari.jpg"
+               "title":"Área Verde",
+               "description":"Entregue à população em outubro de 2005, a Área Verde Dom Constantino Lüers tornou-se mais uma opção de lazer por entre as edificações, dando um quê de charme com todos os seus 900 metros verdes, a cortar os bairros de Santa Esmeralda e Novo Horizonte. Foram colocadas no ambiente, árvores nativas e plantas ornamentais que criaram uma bela paisagem para visitação de adultos e crianças. Há parquinhos espalhados pela extensão e caminhadas ao ar livre. Mesmo em pleno centro comercial de Arapiraca, o lugar transmite uma sensação de que se está no campo, a perceber-se a presença de saguis (pequenos macacos) e pássaros silvestres nos galhos das árvores. O local dispõe de guardas municipais que o mantém seguro e é perto de vários outros empreendimentos de diferentes ramos.",
+               "image":"https://s3.7segundos.com.br/uploads/extra/imagens/area-verde-3.jpg"
             },
+
             {
-               "title":"Onde ir?3",
-               "description":"descrição básica",
-               "image":"link da foto"
+               "title":"Concatedral Nossa Senhora do Bom Conselho",
+               "description":"A cruz da igreja Concatedral é uma referência histórica de nossa cidade e pode ser vista por todos os pontos de Arapiraca. A Paróquia Concatedral de Nossa Senhora do Bom Conselho representa a fé tangível deste povo guerreiro, que é o de Arapiraca. A Igreja do Santíssimo, conhecida como Igreja Matriz, foi construída por Manoel André, fundador da cidade. Ela foi erguida como capela em meados do século XXI, quando o então povoado começava a avançar, rumo a se tornar município. Desta feita, em 1855, Manoel André a levantou sobre o túmulo de sua primeira esposa Maria Isabel Silva Valente, representando este o marco de fundação de Arapiraca. Em 3 de fevereiro de 1865, ocorreu a primeira missa. Em 15 de agosto de 1944, ganhou ampliação e tornou-se paróquia. Hoje, a média é de 90 mil fiéis que frequentam o templo religioso por ano.",
+               "image":"https://www.alagoasnews.com.br/images/noticias/5589/ae931cbe2bd252cdb5764244f689a245.jpg"
+            },
+
+            {
+               "title":"Estádio Municipal Coaracy da Mata Fonseca",
+               "description":"Palco de diversas conquistas no campeonato alagoano, pela Agremiação Sportiva Arapiraquense (ASA), o Estádio Municipal Coaracy da Mata Fonseca foi inaugurado em 1952 com o nome do prefeito daquela gestão. No ano seguinte, o povo torcedor daquele time pôde comemorar pela primeira vez o título de campeão estadual. A arena viu o ASA faturar outros seis troféus a partir do ano 2000. Jogos memoráveis aconteceram no local, como as partidas contra as equipes nacionais do Palmeiras e Flamengo. O acesso ao Campeonato Brasileiro da Série B, em 2010, deu maior visibilidade ao plantel alvinegro, e uma reforma para modernização e ampliação do estádio foi executada no “Fumeirão”, como é conhecido também o templo esportivo.",
+               "image":"https://alagoasalerta.com.br/admin/wp-content/uploads/2023/05/municipal-de-arapiraca.jpg"
             }
          ],
          "extra_images":[
