@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:local_turism/commons/app_strings.dart';
 import 'package:local_turism/data/model/city_model.dart';
+import 'package:local_turism/style/app_colors.dart';
 import 'package:local_turism/style/style.dart';
 
 class CityDetailPage extends StatelessWidget {
@@ -17,20 +19,24 @@ class CityDetailPage extends StatelessWidget {
         ),
         body: Padding(
           padding: const EdgeInsets.only(
-            left: 24,
-            right: 24,
+            left: 12,
+            right: 12,
           ),
-          child: Column(
-            children: [
-              Expanded(
-                child: ListView.builder(
-                  itemCount: city.cityFacts.length,
-                  itemBuilder: (context, index) => cityFact(
-                    city.cityFacts[index],
-                  ),
-                ),
-              ),
-            ],
+          child: Expanded(
+            child: ListView.builder(
+              itemCount: city.cityFacts.length,
+              itemBuilder: (context, index) {
+                return Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const SizedBox(height: 14),
+                    _cityFact(
+                      city.cityFacts[index],
+                    ),
+                  ],
+                );
+              },
+            ),
           ),
         ),
       ),
@@ -43,11 +49,11 @@ class CityDetailPage extends StatelessWidget {
           style: Style.appBarTextStyle,
         ),
         centerTitle: true,
-        backgroundColor: Colors.white,
+        backgroundColor: AppColors.white,
         elevation: 0,
       );
 
-  Widget cityFact(CityFact fact) {
+  Widget _cityFact(CityFact fact) {
     return SizedBox(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -56,17 +62,39 @@ class CityDetailPage extends StatelessWidget {
             fact.title,
             style: Style.cityDetailTitleStyleBold,
           ),
-          Container(
+          const SizedBox(height: 17),
+          SizedBox(
             height: 340,
-            color: Colors.amber,
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(16.0),
+              child: Image.network(
+                fact.image,
+                fit: BoxFit.cover,
+              ),
+            ),
           ),
-          //Text(fact.image),
+          const SizedBox(height: 11),
           Text(
             fact.description,
             style: Style.cityDetailDescriptionStyle,
           ),
+          const Divider(
+            color: AppColors.black,
+          ),
+          const SizedBox(height: 12),
         ],
       ),
+    );
+  }
+
+  Widget _bottomPictures(String picture, String cityName) {
+    return Column(
+      children: [
+        Text(
+          '${AppStrings.moreInText}${city.name}:',
+          style: Style.cityDetailTitleStyleBold,
+        ),
+      ],
     );
   }
 }
