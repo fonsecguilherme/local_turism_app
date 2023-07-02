@@ -40,4 +40,19 @@ class Style {
     fontSize: 16,
     fontWeight: FontWeight.w500,
   );
+
+  static const cityDetailTitleStyleSemiBold = TextStyle(
+    fontSize: 22,
+    fontWeight: FontWeight.w600,
+  );
+
+  static const cityDetailTitleStyleBold = TextStyle(
+    fontSize: 22,
+    fontWeight: FontWeight.w700,
+  );
+
+  static const cityDetailDescriptionStyle = TextStyle(
+    fontSize: 16,
+    fontWeight: FontWeight.w300,
+  );
 }
