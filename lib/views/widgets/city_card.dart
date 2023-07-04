@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:local_turism/data/model/city_model.dart';
+import 'package:local_turism/style/style.dart';
 import 'package:local_turism/views/widgets/photo_carousel_widget.dart';
 import 'package:local_turism/views/widgets/tag_item.dart';
 
@@ -33,7 +34,7 @@ class CityCard extends StatelessWidget {
         ),
         child: Text(
           city.title,
-          style: const TextStyle(fontSize: 22, fontWeight: FontWeight.w600),
+          style: Style.cityDetailTitleStyleSemiBold,
         ),
       );
 }
