@@ -19,10 +19,7 @@ class CityDetailPage extends StatelessWidget {
           child: _appBar(),
         ),
         body: Padding(
-          padding: const EdgeInsets.only(
-            left: 12,
-            right: 12,
-          ),
+          padding: const EdgeInsets.symmetric(horizontal: 12),
           child: Expanded(
             child: ListView.builder(
               itemCount: city.cityFacts.length,
@@ -93,18 +90,20 @@ class CityDetailPage extends StatelessWidget {
             fact.title,
             style: Style.cityDetailTitleStyleBold,
           ),
-          const SizedBox(height: 17),
-          _cityFactImage(fact.image),
-          const SizedBox(height: 11),
+          Padding(
+            padding: const EdgeInsets.only(top: 17, bottom: 11),
+            child: _cityFactImage(fact.image),
+          ),
           Text(
             fact.description,
             style: Style.cityDetailDescriptionStyle,
           ),
-          const SizedBox(height: 6),
-          const Divider(
-            color: AppColors.black,
+          const Padding(
+            padding: EdgeInsets.symmetric(vertical: 6.0),
+            child: Divider(
+              color: AppColors.black,
+            ),
           ),
-          const SizedBox(height: 6),
         ],
       ),
     );
