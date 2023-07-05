@@ -10,6 +10,10 @@ class CityDetailPage extends StatelessWidget {
 
   const CityDetailPage({super.key, required this.city});
 
+  static Key appBarKey = const Key('appBar');
+  static Key cityFactKey = const Key('cityFact');
+  static Key bottomWidgetKey = const Key('bottomWidget');
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -33,6 +37,7 @@ class CityDetailPage extends StatelessWidget {
                   Visibility(
                     visible: _isLastitem(city.cityFacts, index),
                     child: Column(
+                      key: bottomWidgetKey,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         _bottomText(city.name),
@@ -50,6 +55,7 @@ class CityDetailPage extends StatelessWidget {
   }
 
   Widget _appBar() => AppBar(
+        key: appBarKey,
         title: Text(
           city.name,
           style: Style.appBarTextStyle,
@@ -61,6 +67,7 @@ class CityDetailPage extends StatelessWidget {
 
   Widget _cityFact(CityFact fact) {
     return SizedBox(
+      key: cityFactKey,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
