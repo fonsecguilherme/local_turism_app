@@ -25,17 +25,17 @@ Insira um gif ou um link de alguma demonstração
 * Home page Android/iOS
 <p float="left">
   <img src="https://github.com/fonsecguilherme/local_turism_app/blob/master/screenshots/android01.png" width="350" />
-  <img src="https://github.com/fonsecguilherme/mobile-weather-app/blob/main/nees_weather/screenshots/iphone01.jpg" width="350" />
+  <img src="https://github.com/fonsecguilherme/local_turism_app/blob/master/screenshots/iphone01.png" width="350" />
 </p>
 
 * Detalhe da cidade Android
 <p float="left">
   <img src="https://github.com/fonsecguilherme/local_turism_app/blob/master/screenshots/android02.png" width="350" />
-  <img src="https://github.com/fonsecguilherme/mobile-weather-app/blob/main/nees_weather/screenshots/android02.jpg" width="350" />
+  <img src="https://github.com/fonsecguilherme/local_turism_app/blob/master/screenshots/android03.png" width="350" />
 </p>
 
 * Detalhe da cidade iOS
 <p float="left">
   <img src="https://github.com/fonsecguilherme/local_turism_app/blob/master/screenshots/iphone02.png" width="350" />
-  <img src="https://github.com/fonsecguilherme/mobile-weather-app/blob/main/nees_weather/screenshots/iphone03.jpg" width="350" />
+  <img src="https://github.com/fonsecguilherme/local_turism_app/blob/master/screenshots/iphone03.png" width="350" />
 </p>
