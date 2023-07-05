@@ -3,9 +3,9 @@ import 'package:local_turism/commons/app_strings.dart';
 import 'package:local_turism/data/model/city_model.dart';
 import 'package:local_turism/data/repository/city_repository.dart';
 import 'package:local_turism/style/style.dart';
-import 'package:local_turism/views/pages/data_page.dart';
-import 'package:local_turism/views/pages/error_page.dart';
-import 'package:local_turism/views/pages/loading_page.dart';
+import 'package:local_turism/views/pages/data_page/data_page.dart';
+import 'package:local_turism/views/pages/error_page/error_page.dart';
+import 'package:local_turism/views/pages/loading_page/loading_page.dart';
 
 class HomePageWidget extends StatefulWidget {
   final CityRepository repository;

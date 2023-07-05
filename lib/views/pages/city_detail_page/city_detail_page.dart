@@ -20,52 +20,30 @@ class CityDetailPage extends StatelessWidget {
         ),
         body: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 12),
-          child: Expanded(
-            child: ListView.builder(
-              itemCount: city.cityFacts.length,
-              itemBuilder: (context, index) {
-                return Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    const SizedBox(height: 14),
-                    _cityFact(
-                      city.cityFacts[index],
+          child: ListView.builder(
+            itemCount: city.cityFacts.length,
+            itemBuilder: (context, index) {
+              return Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const SizedBox(height: 14),
+                  _cityFact(
+                    city.cityFacts[index],
+                  ),
+                  Visibility(
+                    visible: _isLastitem(city.cityFacts, index),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        _bottomText(city.name),
+                        _photoSlider(context, city.extraImages),
+                      ],
                     ),
-                    Visibility(
-                        visible: _isLastitem(city.cityFacts, index),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            _bottomText(city.name),
-                            _photoSlider(context, city.extraImages),
-                          ],
-                        )),
-                  ],
-                );
-              },
-            ),
+                  ),
+                ],
+              );
+            },
           ),
-        ),
-      ),
-    );
-  }
-
-  Widget _photoSlider(BuildContext context, List<String> photosList) {
-    return Padding(
-      padding: const EdgeInsets.only(top: 13, bottom: 47),
-      child: SizedBox(
-        height: 140,
-        child: ListView.builder(
-          scrollDirection: Axis.horizontal,
-          itemCount: photosList.length,
-          itemBuilder: ((context, index) {
-            return Padding(
-              padding: const EdgeInsets.only(right: 24.0),
-              child: PhotoWidget(
-                image: photosList[index],
-              ),
-            );
-          }),
         ),
       ),
     );
@@ -122,6 +100,31 @@ class CityDetailPage extends StatelessWidget {
           style: Style.cityDetailTitleStyleBold,
         ),
       ],
+    );
+  }
+
+  Widget _photoSlider(BuildContext context, List<String> photosList) {
+    return Padding(
+      padding: const EdgeInsets.only(top: 13, bottom: 47),
+      child: SizedBox(
+        height: 140,
+        child: ListView.builder(
+          scrollDirection: Axis.horizontal,
+          itemCount: photosList.length,
+          itemBuilder: ((context, index) {
+            return Padding(
+              padding: const EdgeInsets.only(right: 24.0),
+              child: SizedBox(
+                width: 140,
+                height: 140,
+                child: PhotoWidget(
+                  image: photosList[index],
+                ),
+              ),
+            );
+          }),
+        ),
+      ),
     );
   }
 

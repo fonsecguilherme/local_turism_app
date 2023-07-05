@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:local_turism/views/widgets/tag_item.dart';
+import 'package:local_turism/views/pages/data_page/widgets/tag_item.dart';
 
 void main() {
   testWidgets('Find tags according to a list', (tester) async {

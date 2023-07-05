@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:local_turism/commons/app_strings.dart';
 import 'package:local_turism/data/repository/city_repository.dart';
-import 'package:local_turism/views/pages/error_page.dart';
+import 'package:local_turism/views/pages/error_page/error_page.dart';
 import 'package:mocktail/mocktail.dart';
 
 class MockCityRepository extends Mock implements CityRepository {}

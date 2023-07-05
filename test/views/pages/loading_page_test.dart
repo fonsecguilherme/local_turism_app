@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:local_turism/views/pages/loading_page.dart';
+import 'package:local_turism/views/pages/loading_page/loading_page.dart';
 
 void main() {
   testWidgets('Must find CircularProgressIndicator', (tester) async {

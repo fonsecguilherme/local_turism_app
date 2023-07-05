@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:local_turism/data/model/city_model.dart';
-import 'package:local_turism/views/pages/data_page.dart';
-import 'package:local_turism/views/widgets/city_card.dart';
+import 'package:local_turism/views/pages/data_page/data_page.dart';
+import 'package:local_turism/views/pages/data_page/widgets/city_card.dart';
 import 'package:network_image_mock/network_image_mock.dart';
 
 List<City> _cities = [

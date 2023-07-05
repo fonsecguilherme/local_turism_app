@@ -3,9 +3,9 @@ import 'package:go_router/go_router.dart';
 import 'package:local_turism/data/model/city_model.dart';
 import 'package:local_turism/data/repository/city_repository.dart';
 import 'package:local_turism/style/style.dart';
-import 'package:local_turism/views/pages/city_detail_page.dart';
-import 'package:local_turism/views/pages/error_page.dart';
-import 'package:local_turism/views/pages/home_page.dart';
+import 'package:local_turism/views/pages/city_detail_page/city_detail_page.dart';
+import 'package:local_turism/views/pages/error_page/error_page.dart';
+import 'package:local_turism/views/pages/home_page/home_page.dart';
 
 void main() => runApp(const MainApp());
 
