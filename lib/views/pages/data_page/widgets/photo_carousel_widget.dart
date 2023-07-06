@@ -18,6 +18,8 @@ class PhotoCarouselWidget extends StatefulWidget {
 class _PhotoCarouselWidgetState extends State<PhotoCarouselWidget> {
   int _current = 0;
   final CarouselController _controller = CarouselController();
+  static const Key carouselKey = Key('carouselKey');
+  static const Key dotsKey = Key('dotsKey');
 
   @override
   Widget build(BuildContext context) => Padding(
@@ -35,6 +37,7 @@ class _PhotoCarouselWidgetState extends State<PhotoCarouselWidget> {
       );
 
   Widget carouselWidget() => CarouselSlider.builder(
+        key: carouselKey,
         carouselController: _controller,
         itemCount: widget.city.mainImages.length,
         options: CarouselOptions(
@@ -68,6 +71,7 @@ class _PhotoCarouselWidgetState extends State<PhotoCarouselWidget> {
       );
 
   Widget dotsWidget() => Row(
+        key: dotsKey,
         mainAxisAlignment: MainAxisAlignment.start,
         children: widget.city.mainImages.asMap().entries.map((entry) {
           return GestureDetector(
