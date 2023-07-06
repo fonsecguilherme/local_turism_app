@@ -54,9 +54,12 @@ class _PhotoCarouselWidgetState extends State<PhotoCarouselWidget> {
               context.goNamed('detailScreen', extra: city);
             },
             child: Stack(
-              fit: StackFit.expand,
               children: [
-                PhotoWidget(image: widget.city.mainImages[index]),
+                Positioned.fill(
+                  child: PhotoWidget(
+                    image: widget.city.mainImages[index],
+                  ),
+                ),
                 photoText(),
               ],
             ),
@@ -85,17 +88,29 @@ class _PhotoCarouselWidgetState extends State<PhotoCarouselWidget> {
         }).toList(),
       );
 
-  Widget photoText() => Padding(
-        padding: const EdgeInsets.only(
-          top: 4,
-          bottom: 29,
-          left: 21,
-        ),
+  Widget photoText() => Align(
+        alignment: Alignment.bottomCenter,
         child: Container(
+          padding: const EdgeInsets.only(
+            top: 4,
+            bottom: 29,
+            left: 21,
+          ),
+          constraints: const BoxConstraints(minHeight: 0.0),
+          decoration: const BoxDecoration(
+            gradient: LinearGradient(
+              begin: Alignment.center,
+              end: Alignment.bottomCenter,
+              colors: [
+                Colors.transparent,
+                Colors.black,
+              ],
+            ),
+          ),
           alignment: Alignment.bottomLeft,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.end,
-            crossAxisAlignment: CrossAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               Text(
                 widget.city.name,
