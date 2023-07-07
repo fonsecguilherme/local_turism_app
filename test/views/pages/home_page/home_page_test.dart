@@ -64,7 +64,7 @@ void main() {
 
     await tester.pumpWidget(
       MaterialApp(
-        home: ErrorPage(repository: cityRepository),
+        home: ErrorPage(cityRepository: cityRepository),
       ),
     );
 
@@ -78,7 +78,7 @@ Future<void> _createWidget(WidgetTester tester) async {
   await tester.pumpWidget(
     MaterialApp(
       home: HomePageWidget(
-        repository: cityRepository,
+        cityRepository: cityRepository,
       ),
     ),
   );

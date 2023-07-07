@@ -54,7 +54,7 @@ class _PhotoCarouselWidgetState extends State<PhotoCarouselWidget> {
           return GestureDetector(
             onTap: () {
               City city = widget.city;
-              context.goNamed('detailScreen', extra: city);
+              context.go('/detailScreen', extra: city);
             },
             child: Stack(
               children: [
