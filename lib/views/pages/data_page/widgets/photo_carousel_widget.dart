@@ -102,6 +102,9 @@ class _PhotoCarouselWidgetState extends State<PhotoCarouselWidget> {
           ),
           constraints: const BoxConstraints(minHeight: 0.0),
           decoration: const BoxDecoration(
+            borderRadius: BorderRadius.only(
+                bottomLeft: Radius.circular(16),
+                bottomRight: Radius.circular(16)),
             gradient: LinearGradient(
               begin: Alignment.center,
               end: Alignment.bottomCenter,
