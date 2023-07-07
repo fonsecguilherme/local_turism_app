@@ -18,6 +18,8 @@ class PhotoCarouselWidget extends StatefulWidget {
 class _PhotoCarouselWidgetState extends State<PhotoCarouselWidget> {
   int _current = 0;
   final CarouselController _controller = CarouselController();
+  static const Key carouselKey = Key('carouselKey');
+  static const Key dotsKey = Key('dotsKey');
 
   @override
   Widget build(BuildContext context) => Padding(
@@ -35,6 +37,7 @@ class _PhotoCarouselWidgetState extends State<PhotoCarouselWidget> {
       );
 
   Widget carouselWidget() => CarouselSlider.builder(
+        key: carouselKey,
         carouselController: _controller,
         itemCount: widget.city.mainImages.length,
         options: CarouselOptions(
@@ -51,12 +54,15 @@ class _PhotoCarouselWidgetState extends State<PhotoCarouselWidget> {
           return GestureDetector(
             onTap: () {
               City city = widget.city;
-              context.goNamed('detailScreen', extra: city);
+              context.go('/detailScreen', extra: city);
             },
             child: Stack(
-              fit: StackFit.expand,
               children: [
-                PhotoWidget(image: widget.city.mainImages[index]),
+                Positioned.fill(
+                  child: PhotoWidget(
+                    image: widget.city.mainImages[index],
+                  ),
+                ),
                 photoText(),
               ],
             ),
@@ -65,6 +71,7 @@ class _PhotoCarouselWidgetState extends State<PhotoCarouselWidget> {
       );
 
   Widget dotsWidget() => Row(
+        key: dotsKey,
         mainAxisAlignment: MainAxisAlignment.start,
         children: widget.city.mainImages.asMap().entries.map((entry) {
           return GestureDetector(
@@ -85,17 +92,32 @@ class _PhotoCarouselWidgetState extends State<PhotoCarouselWidget> {
         }).toList(),
       );
 
-  Widget photoText() => Padding(
-        padding: const EdgeInsets.only(
-          top: 4,
-          bottom: 29,
-          left: 21,
-        ),
+  Widget photoText() => Align(
+        alignment: Alignment.bottomCenter,
         child: Container(
+          padding: const EdgeInsets.only(
+            top: 4,
+            bottom: 29,
+            left: 21,
+          ),
+          constraints: const BoxConstraints(minHeight: 0.0),
+          decoration: const BoxDecoration(
+            borderRadius: BorderRadius.only(
+                bottomLeft: Radius.circular(16),
+                bottomRight: Radius.circular(16)),
+            gradient: LinearGradient(
+              begin: Alignment.center,
+              end: Alignment.bottomCenter,
+              colors: [
+                Colors.transparent,
+                Colors.black,
+              ],
+            ),
+          ),
           alignment: Alignment.bottomLeft,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.end,
-            crossAxisAlignment: CrossAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               Text(
                 widget.city.name,

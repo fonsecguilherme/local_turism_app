@@ -4,9 +4,9 @@ import 'package:local_turism/commons/app_strings.dart';
 import 'package:local_turism/data/repository/city_repository.dart';
 
 class ErrorPage extends StatefulWidget {
-  final CityRepository repository;
+  final CityRepository cityRepository;
 
-  const ErrorPage({super.key, required this.repository});
+  const ErrorPage({super.key, required this.cityRepository});
 
   @override
   State<ErrorPage> createState() => _ErrorPageState();
@@ -24,7 +24,7 @@ class _ErrorPageState extends State<ErrorPage> {
           ElevatedButton(
             onPressed: () {
               setState(() {
-                widget.repository.getAll();
+                widget.cityRepository.getAll();
                 context.goNamed('/');
               });
             },

@@ -9,6 +9,8 @@ void main() {
     await mockNetworkImagesFor(() => _createWidget(tester));
 
     expect(find.image(NetworkImage(_city.mainImages.first)), findsOneWidget);
+    expect(find.byKey(const Key('carouselKey')), findsOneWidget);
+    expect(find.byKey(const Key('dotsKey')), findsOneWidget);
 
     expect(find.text('Maceió'), findsOneWidget);
     expect(find.text('descrição'), findsOneWidget);

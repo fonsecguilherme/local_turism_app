@@ -4,13 +4,13 @@ import 'package:local_turism/data/model/city_model.dart';
 import 'package:local_turism/data/repository/city_repository.dart';
 import 'package:local_turism/style/style.dart';
 import 'package:local_turism/views/pages/data_page/data_page.dart';
-import 'package:local_turism/views/pages/error_page/error_page.dart';
 import 'package:local_turism/views/pages/loading_page/loading_page.dart';
 
 class HomePageWidget extends StatefulWidget {
-  final CityRepository repository;
+  final CityRepository _cityRepository;
 
-  const HomePageWidget({super.key, required this.repository});
+  HomePageWidget({super.key, CityRepository? cityRepository})
+      : _cityRepository = cityRepository ?? CityRepository();
 
   @override
   State<HomePageWidget> createState() => _HomePageWidgetState();
@@ -22,7 +22,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
   @override
   void initState() {
     super.initState();
-    cities = widget.repository.getAll();
+    cities = widget._cityRepository.getAll();
   }
 
   @override
@@ -36,7 +36,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
             future: cities,
             builder: (context, snapshot) {
               if (snapshot.hasError) {
-                return ErrorPage(repository: widget.repository);
+                return errorWidget() /*ErrorPage(cityRepository: widget._cityRepository)*/;
               } else if (snapshot.connectionState == ConnectionState.waiting) {
                 return const LoadingPage();
               } else if (snapshot.hasData) {
@@ -61,5 +61,30 @@ class _HomePageWidgetState extends State<HomePageWidget> {
         centerTitle: true,
         backgroundColor: Colors.white,
         elevation: 0,
+      );
+
+  Widget errorWidget() => Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            const Text(
+              'Ops!\nParece que não consegui obter os dados.',
+              textAlign: TextAlign.center,
+            ),
+            const SizedBox(height: 12),
+            ElevatedButton(
+              onPressed: () {
+                setState(() {
+                  cities = widget._cityRepository.getAll();
+                });
+              },
+              style: ElevatedButton.styleFrom(
+                shape: const CircleBorder(),
+                padding: const EdgeInsets.all(8),
+              ),
+              child: const Icon(Icons.refresh_rounded),
+            )
+          ],
+        ),
       );
 }

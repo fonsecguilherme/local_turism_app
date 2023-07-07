@@ -15,30 +15,24 @@ final GoRouter _router = GoRouter(
   initialLocation: '/',
   routes: <RouteBase>[
     GoRoute(
-        name: 'home',
-        path: '/',
-        builder: (BuildContext context, GoRouterState state) {
-          return HomePageWidget(
-            repository: _cityRepository,
-          );
-        },
-        routes: [
-          GoRoute(
-            name: 'detailScreen',
-            path: 'detailScreen',
-            builder: (context, state) {
-              City city = state.extra as City;
-              return CityDetailPage(city: city);
-            },
-          ),
-        ]),
+      path: '/',
+      builder: (BuildContext context, GoRouterState state) {
+        return HomePageWidget();
+      },
+      routes: [
+        GoRoute(
+          path: 'detailScreen',
+          builder: (context, state) {
+            City city = state.extra as City;
+            return CityDetailPage(city: city);
+          },
+        ),
+      ],
+    ),
     GoRoute(
-      name: 'errorPage',
       path: '/errorPage',
       builder: (BuildContext context, GoRouterState state) {
-        return ErrorPage(
-          repository: _cityRepository,
-        );
+        return ErrorPage(cityRepository: _cityRepository);
       },
     ),
   ],
