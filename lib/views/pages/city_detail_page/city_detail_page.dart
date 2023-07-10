@@ -20,6 +20,10 @@ class CityDetailPage extends StatefulWidget {
 }
 
 class _CityDetailPageState extends State<CityDetailPage> {
+  int _index = 0;
+  String _image =
+      'http://experimentemaceio.com.br/wp-content/uploads/2022/05/17-11-2021-Artesanato-Pajucara-Turismo-SEMTEL-Por-Emile-Valoes_3.jpg';
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -44,31 +48,54 @@ class _CityDetailPageState extends State<CityDetailPage> {
         elevation: 0,
       );
 
-  Widget _body() => Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 12),
-        child: ListView.builder(
-          itemCount: widget.city.cityFacts.length,
-          itemBuilder: (context, index) {
-            return Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                const SizedBox(height: 14),
-                CityFactWidget(widget.city.cityFacts[index],
-                    key: CityDetailPage.cityFactKey),
-                Visibility(
-                  visible: _isLastitem(widget.city.cityFacts, index),
-                  child: Column(
-                    key: CityDetailPage.bottomWidgetKey,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      _bottomText(widget.city.name),
-                      _photoSlider(context, widget.city.extraImages),
-                    ],
-                  ),
-                ),
-              ],
-            );
-          },
+  Widget _body() => IndexedStack(
+        index: _index,
+        children: [
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 12),
+            child: ListView.builder(
+              itemCount: widget.city.cityFacts.length,
+              itemBuilder: (context, index) {
+                return Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const SizedBox(height: 14),
+                    CityFactWidget(widget.city.cityFacts[index],
+                        key: CityDetailPage.cityFactKey),
+                    Visibility(
+                      visible: _isLastitem(widget.city.cityFacts, index),
+                      child: Column(
+                        key: CityDetailPage.bottomWidgetKey,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          _bottomText(widget.city.name),
+                          _photoSlider(context, widget.city.extraImages),
+                        ],
+                      ),
+                    ),
+                  ],
+                );
+              },
+            ),
+          ),
+          _expandedImageWidget(),
+        ],
+      );
+
+  Widget _expandedImageWidget() => Container(
+        decoration: BoxDecoration(
+          color: Colors.white.withOpacity(0.2),
+        ),
+        child: Center(
+          child: ConstrainedBox(
+            constraints: const BoxConstraints(
+              maxHeight: 400,
+              maxWidth: 400,
+            ),
+            child: Image.network(
+              _image,
+            ),
+          ),
         ),
       );
 
@@ -94,11 +121,24 @@ class _CityDetailPageState extends State<CityDetailPage> {
           itemBuilder: ((context, index) {
             return Padding(
               padding: const EdgeInsets.only(right: 24.0),
-              child: SizedBox(
-                width: 140,
-                height: 140,
-                child: PhotoWidget(
-                  image: photosList[index],
+              child: GestureDetector(
+                onLongPress: () {
+                  setState(() {
+                    _index = 1;
+                    _image = photosList[index];
+                  });
+                },
+                onLongPressEnd: (details) {
+                  setState(() {
+                    _index = 0;
+                  });
+                },
+                child: SizedBox(
+                  width: 140,
+                  height: 140,
+                  child: PhotoWidget(
+                    image: photosList[index],
+                  ),
                 ),
               ),
             );
