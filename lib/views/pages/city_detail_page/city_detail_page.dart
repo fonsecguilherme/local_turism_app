@@ -14,6 +14,9 @@ class CityDetailPage extends StatefulWidget {
   static Key appBarKey = const Key('appBar');
   static Key cityFactKey = const Key('cityFact');
   static Key bottomWidgetKey = const Key('bottomWidget');
+  static Key horizontalListViewKey = const Key('horizontalListViewKey');
+  static Key verticalListViewKey = const Key('verticalListViewKey');
+  static Key expandedImageKey = const Key('expandedImageKey');
 
   @override
   State<CityDetailPage> createState() => _CityDetailPageState();
@@ -54,6 +57,7 @@ class _CityDetailPageState extends State<CityDetailPage> {
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 12),
             child: ListView.builder(
+              key: CityDetailPage.verticalListViewKey,
               itemCount: widget.city.cityFacts.length,
               itemBuilder: (context, index) {
                 return Column(
@@ -83,6 +87,7 @@ class _CityDetailPageState extends State<CityDetailPage> {
       );
 
   Widget _expandedImageWidget() => Container(
+        key: CityDetailPage.expandedImageKey,
         decoration: BoxDecoration(
           color: Colors.white.withOpacity(0.2),
         ),
@@ -116,6 +121,7 @@ class _CityDetailPageState extends State<CityDetailPage> {
       child: SizedBox(
         height: 140,
         child: ListView.builder(
+          key: CityDetailPage.horizontalListViewKey,
           scrollDirection: Axis.horizontal,
           itemCount: photosList.length,
           itemBuilder: ((context, index) {
@@ -137,6 +143,7 @@ class _CityDetailPageState extends State<CityDetailPage> {
                   width: 140,
                   height: 140,
                   child: PhotoWidget(
+                    key: Key('photo$index'),
                     image: photosList[index],
                   ),
                 ),
