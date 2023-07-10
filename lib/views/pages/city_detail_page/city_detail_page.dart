@@ -6,7 +6,7 @@ import 'package:local_turism/style/style.dart';
 import 'package:local_turism/views/pages/city_detail_page/widgets/city_fact_widget.dart';
 import 'package:local_turism/views/widgets/photo_widget.dart';
 
-class CityDetailPage extends StatelessWidget {
+class CityDetailPage extends StatefulWidget {
   final City city;
 
   const CityDetailPage({super.key, required this.city});
@@ -15,6 +15,11 @@ class CityDetailPage extends StatelessWidget {
   static Key cityFactKey = const Key('cityFact');
   static Key bottomWidgetKey = const Key('bottomWidget');
 
+  @override
+  State<CityDetailPage> createState() => _CityDetailPageState();
+}
+
+class _CityDetailPageState extends State<CityDetailPage> {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -29,9 +34,9 @@ class CityDetailPage extends StatelessWidget {
   }
 
   Widget _appBar() => AppBar(
-        key: appBarKey,
+        key: CityDetailPage.appBarKey,
         title: Text(
-          city.name,
+          widget.city.name,
           style: Style.appBarTextStyle,
         ),
         centerTitle: true,
@@ -42,21 +47,22 @@ class CityDetailPage extends StatelessWidget {
   Widget _body() => Padding(
         padding: const EdgeInsets.symmetric(horizontal: 12),
         child: ListView.builder(
-          itemCount: city.cityFacts.length,
+          itemCount: widget.city.cityFacts.length,
           itemBuilder: (context, index) {
             return Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 const SizedBox(height: 14),
-                CityFactWidget(city.cityFacts[index], key: cityFactKey),
+                CityFactWidget(widget.city.cityFacts[index],
+                    key: CityDetailPage.cityFactKey),
                 Visibility(
-                  visible: _isLastitem(city.cityFacts, index),
+                  visible: _isLastitem(widget.city.cityFacts, index),
                   child: Column(
-                    key: bottomWidgetKey,
+                    key: CityDetailPage.bottomWidgetKey,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      _bottomText(city.name),
-                      _photoSlider(context, city.extraImages),
+                      _bottomText(widget.city.name),
+                      _photoSlider(context, widget.city.extraImages),
                     ],
                   ),
                 ),
@@ -70,7 +76,7 @@ class CityDetailPage extends StatelessWidget {
     return Column(
       children: [
         Text(
-          '${AppStrings.moreInText}${city.name}:',
+          '${AppStrings.moreInText}${widget.city.name}:',
           style: Style.cityDetailTitleStyleBold,
         ),
       ],
