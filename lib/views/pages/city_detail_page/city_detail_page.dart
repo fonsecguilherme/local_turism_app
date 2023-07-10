@@ -3,9 +3,10 @@ import 'package:local_turism/commons/app_strings.dart';
 import 'package:local_turism/data/model/city_model.dart';
 import 'package:local_turism/style/app_colors.dart';
 import 'package:local_turism/style/style.dart';
+import 'package:local_turism/views/pages/city_detail_page/widgets/city_fact_widget.dart';
 import 'package:local_turism/views/widgets/photo_widget.dart';
 
-class CityDetailPage extends StatelessWidget {
+class CityDetailPage extends StatefulWidget {
   final City city;
 
   const CityDetailPage({super.key, required this.city});
@@ -13,6 +14,18 @@ class CityDetailPage extends StatelessWidget {
   static Key appBarKey = const Key('appBar');
   static Key cityFactKey = const Key('cityFact');
   static Key bottomWidgetKey = const Key('bottomWidget');
+  static Key horizontalListViewKey = const Key('horizontalListViewKey');
+  static Key verticalListViewKey = const Key('verticalListViewKey');
+  static Key expandedImageKey = const Key('expandedImageKey');
+
+  @override
+  State<CityDetailPage> createState() => _CityDetailPageState();
+}
+
+class _CityDetailPageState extends State<CityDetailPage> {
+  int _index = 0;
+  String _image =
+      'http://experimentemaceio.com.br/wp-content/uploads/2022/05/17-11-2021-Artesanato-Pajucara-Turismo-SEMTEL-Por-Emile-Valoes_3.jpg';
 
   @override
   Widget build(BuildContext context) {
@@ -22,42 +35,15 @@ class CityDetailPage extends StatelessWidget {
           preferredSize: const Size.fromHeight(kToolbarHeight),
           child: _appBar(),
         ),
-        body: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 12),
-          child: ListView.builder(
-            itemCount: city.cityFacts.length,
-            itemBuilder: (context, index) {
-              return Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  const SizedBox(height: 14),
-                  _cityFact(
-                    city.cityFacts[index],
-                  ),
-                  Visibility(
-                    visible: _isLastitem(city.cityFacts, index),
-                    child: Column(
-                      key: bottomWidgetKey,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        _bottomText(city.name),
-                        _photoSlider(context, city.extraImages),
-                      ],
-                    ),
-                  ),
-                ],
-              );
-            },
-          ),
-        ),
+        body: _body(),
       ),
     );
   }
 
   Widget _appBar() => AppBar(
-        key: appBarKey,
+        key: CityDetailPage.appBarKey,
         title: Text(
-          city.name,
+          widget.city.name,
           style: Style.appBarTextStyle,
         ),
         centerTitle: true,
@@ -65,45 +51,64 @@ class CityDetailPage extends StatelessWidget {
         elevation: 0,
       );
 
-  Widget _cityFact(CityFact fact) {
-    return SizedBox(
-      key: cityFactKey,
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
+  Widget _body() => IndexedStack(
+        index: _index,
         children: [
-          Text(
-            fact.title,
-            style: Style.cityDetailTitleStyleBold,
-          ),
           Padding(
-            padding: const EdgeInsets.only(top: 17, bottom: 11),
-            child: _cityFactImage(fact.image),
-          ),
-          Text(
-            fact.description,
-            style: Style.cityDetailDescriptionStyle,
-          ),
-          const Padding(
-            padding: EdgeInsets.symmetric(vertical: 6.0),
-            child: Divider(
-              color: AppColors.black,
+            padding: const EdgeInsets.symmetric(horizontal: 12),
+            child: ListView.builder(
+              key: CityDetailPage.verticalListViewKey,
+              itemCount: widget.city.cityFacts.length,
+              itemBuilder: (context, index) {
+                return Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const SizedBox(height: 14),
+                    CityFactWidget(widget.city.cityFacts[index],
+                        key: CityDetailPage.cityFactKey),
+                    Visibility(
+                      visible: _isLastitem(widget.city.cityFacts, index),
+                      child: Column(
+                        key: CityDetailPage.bottomWidgetKey,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          _bottomText(widget.city.name),
+                          _photoSlider(context, widget.city.extraImages),
+                        ],
+                      ),
+                    ),
+                  ],
+                );
+              },
             ),
           ),
+          _expandedImageWidget(),
         ],
-      ),
-    );
-  }
+      );
 
-  Widget _cityFactImage(String image) => SizedBox(
-        height: 340,
-        child: PhotoWidget(image: image),
+  Widget _expandedImageWidget() => Container(
+        key: CityDetailPage.expandedImageKey,
+        decoration: BoxDecoration(
+          color: Colors.white.withOpacity(0.2),
+        ),
+        child: Center(
+          child: ConstrainedBox(
+            constraints: const BoxConstraints(
+              maxHeight: 400,
+              maxWidth: 400,
+            ),
+            child: Image.network(
+              _image,
+            ),
+          ),
+        ),
       );
 
   Widget _bottomText(String cityName) {
     return Column(
       children: [
         Text(
-          '${AppStrings.moreInText}${city.name}:',
+          '${AppStrings.moreInText}${widget.city.name}:',
           style: Style.cityDetailTitleStyleBold,
         ),
       ],
@@ -116,16 +121,31 @@ class CityDetailPage extends StatelessWidget {
       child: SizedBox(
         height: 140,
         child: ListView.builder(
+          key: CityDetailPage.horizontalListViewKey,
           scrollDirection: Axis.horizontal,
           itemCount: photosList.length,
           itemBuilder: ((context, index) {
             return Padding(
               padding: const EdgeInsets.only(right: 24.0),
-              child: SizedBox(
-                width: 140,
-                height: 140,
-                child: PhotoWidget(
-                  image: photosList[index],
+              child: GestureDetector(
+                onLongPress: () {
+                  setState(() {
+                    _index = 1;
+                    _image = photosList[index];
+                  });
+                },
+                onLongPressEnd: (details) {
+                  setState(() {
+                    _index = 0;
+                  });
+                },
+                child: SizedBox(
+                  width: 140,
+                  height: 140,
+                  child: PhotoWidget(
+                    key: Key('photo$index'),
+                    image: photosList[index],
+                  ),
                 ),
               ),
             );
