@@ -15,10 +15,22 @@ void main() {
       final bottomWidgetKey = find.byKey(CityDetailPage.bottomWidgetKey);
 
       expect(appBarKey, findsOneWidget);
-      expect(cityFactKey, findsNWidgets(2));
+      expect(cityFactKey, findsNWidgets(4));
       expect(bottomWidgetKey, findsOneWidget);
     },
   );
+
+  testWidgets("Find expanded image widget after long press", (tester) async {
+    await mockNetworkImagesFor(() => _createWidget(tester));
+
+    final photo = find.byKey(const Key('photo0'));
+
+    await tester.ensureVisible(photo);
+    await tester.pump();
+    await tester.longPress(photo);
+
+    expect(find.byKey(CityDetailPage.expandedImageKey), findsOneWidget);
+  });
 }
 
 Future<void> _createWidget(WidgetTester tester) async {
