@@ -5,6 +5,7 @@ import 'package:local_turism/data/repository/city_repository.dart';
 import 'package:local_turism/style/style.dart';
 import 'package:local_turism/views/pages/data_page/data_page.dart';
 import 'package:local_turism/views/pages/loading_page/loading_page.dart';
+import 'package:local_turism/views/widgets/drawer_widget.dart';
 
 class HomePageWidget extends StatefulWidget {
   final CityRepository _cityRepository;
@@ -28,6 +29,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
   @override
   Widget build(BuildContext context) => SafeArea(
         child: Scaffold(
+          drawer: DrawerWidget(),
           appBar: PreferredSize(
             preferredSize: const Size.fromHeight(kToolbarHeight),
             child: _appBar(),
@@ -36,7 +38,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
             future: cities,
             builder: (context, snapshot) {
               if (snapshot.hasError) {
-                return errorWidget() /*ErrorPage(cityRepository: widget._cityRepository)*/;
+                return errorWidget();
               } else if (snapshot.connectionState == ConnectionState.waiting) {
                 return const LoadingPage();
               } else if (snapshot.hasData) {
@@ -54,10 +56,6 @@ class _HomePageWidgetState extends State<HomePageWidget> {
           AppStrings.appBarText,
           style: Style.appBarTextStyle,
         ),
-        leading: IconButton(
-          onPressed: () {},
-          icon: const Icon(Icons.menu_rounded),
-        ),
         centerTitle: true,
         backgroundColor: Colors.white,
         elevation: 0,
@@ -68,7 +66,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             const Text(
-              'Ops!\nParece que não consegui obter os dados.',
+              AppStrings.errorMessage,
               textAlign: TextAlign.center,
             ),
             const SizedBox(height: 12),
