@@ -27,14 +27,14 @@ class _HomePageWidgetState extends State<HomePageWidget> {
   }
 
   @override
-  Widget build(BuildContext context) => SafeArea(
-        child: Scaffold(
-          drawer: DrawerWidget(),
-          appBar: PreferredSize(
-            preferredSize: const Size.fromHeight(kToolbarHeight),
-            child: _appBar(),
-          ),
-          body: FutureBuilder<CityModel?>(
+  Widget build(BuildContext context) => Scaffold(
+        drawer: DrawerWidget(),
+        appBar: PreferredSize(
+          preferredSize: const Size.fromHeight(kToolbarHeight),
+          child: _appBar(),
+        ),
+        body: SafeArea(
+          child: FutureBuilder<CityModel?>(
             future: cities,
             builder: (context, snapshot) {
               if (snapshot.hasError) {

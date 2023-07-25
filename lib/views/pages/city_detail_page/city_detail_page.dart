@@ -29,14 +29,12 @@ class _CityDetailPageState extends State<CityDetailPage> {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        appBar: PreferredSize(
-          preferredSize: const Size.fromHeight(kToolbarHeight),
-          child: _appBar(),
-        ),
-        body: _body(),
+    return Scaffold(
+      appBar: PreferredSize(
+        preferredSize: const Size.fromHeight(kToolbarHeight),
+        child: _appBar(),
       ),
+      body: _body(),
     );
   }
 
@@ -51,39 +49,41 @@ class _CityDetailPageState extends State<CityDetailPage> {
         elevation: 0,
       );
 
-  Widget _body() => IndexedStack(
-        index: _index,
-        children: [
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 12),
-            child: ListView.builder(
-              key: CityDetailPage.verticalListViewKey,
-              itemCount: widget.city.cityFacts.length,
-              itemBuilder: (context, index) {
-                return Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    const SizedBox(height: 14),
-                    CityFactWidget(widget.city.cityFacts[index],
-                        key: CityDetailPage.cityFactKey),
-                    Visibility(
-                      visible: _isLastitem(widget.city.cityFacts, index),
-                      child: Column(
-                        key: CityDetailPage.bottomWidgetKey,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          _bottomText(widget.city.name),
-                          _photoSlider(context, widget.city.extraImages),
-                        ],
+  Widget _body() => SafeArea(
+        child: IndexedStack(
+          index: _index,
+          children: [
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 12),
+              child: ListView.builder(
+                key: CityDetailPage.verticalListViewKey,
+                itemCount: widget.city.cityFacts.length,
+                itemBuilder: (context, index) {
+                  return Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      const SizedBox(height: 14),
+                      CityFactWidget(widget.city.cityFacts[index],
+                          key: CityDetailPage.cityFactKey),
+                      Visibility(
+                        visible: _isLastitem(widget.city.cityFacts, index),
+                        child: Column(
+                          key: CityDetailPage.bottomWidgetKey,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            _bottomText(widget.city.name),
+                            _photoSlider(context, widget.city.extraImages),
+                          ],
+                        ),
                       ),
-                    ),
-                  ],
-                );
-              },
+                    ],
+                  );
+                },
+              ),
             ),
-          ),
-          _expandedImageWidget(),
-        ],
+            _expandedImageWidget(),
+          ],
+        ),
       );
 
   Widget _expandedImageWidget() => Container(
