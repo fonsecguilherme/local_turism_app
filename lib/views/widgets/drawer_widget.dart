@@ -11,9 +11,12 @@ class DrawerWidget extends StatelessWidget {
   final Uri _referencesUrl = Uri.parse(
       'https://docs.google.com/document/d/1J3wZqjC-x6h4sXs93ZkHLcI-mF6GoTtrt4JAW-G2hE8/edit?usp=sharing');
 
+  static const drawerKey = Key('drawerKey');
+
   @override
   Widget build(BuildContext context) {
     return Drawer(
+      key: DrawerWidget.drawerKey,
       child: ListView(
         children: [
           const DrawerHeader(
