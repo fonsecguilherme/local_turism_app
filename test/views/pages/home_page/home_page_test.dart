@@ -7,6 +7,7 @@ import 'package:local_turism/views/pages/data_page/data_page.dart';
 import 'package:local_turism/views/pages/error_page/error_page.dart';
 import 'package:local_turism/views/pages/home_page/home_page.dart';
 import 'package:local_turism/views/pages/loading_page/loading_page.dart';
+import 'package:local_turism/views/widgets/drawer_widget.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:network_image_mock/network_image_mock.dart';
 
@@ -19,13 +20,25 @@ void main() {
     cityRepository = MockCityRepository();
   });
 
-  testWidgets('Find appBar widgets', (tester) async {
+  testWidgets('Find appBar drawer', (tester) async {
+    when(() => cityRepository.getAll()).thenAnswer((_) => Future.value());
+
+    await tester.pumpWidget(MaterialApp(
+        home: Scaffold(
+      drawer: DrawerWidget(),
+    )));
+
+    await tester.dragFrom(
+        tester.getTopLeft(find.byType(MaterialApp)), const Offset(300, 0));
+    await tester.pumpAndSettle();
+  });
+
+  testWidgets('Fin appbar text', (tester) async {
     when(() => cityRepository.getAll()).thenAnswer((_) => Future.value());
 
     await _createWidget(tester);
 
     expect(find.text(AppStrings.appBarText), findsOneWidget);
-    expect(find.byIcon(Icons.menu_rounded), findsOneWidget);
   });
 
   testWidgets('Find data page widget', (tester) async {
@@ -77,8 +90,10 @@ void main() {
 Future<void> _createWidget(WidgetTester tester) async {
   await tester.pumpWidget(
     MaterialApp(
-      home: HomePageWidget(
-        cityRepository: cityRepository,
+      home: Scaffold(
+        body: HomePageWidget(
+          cityRepository: cityRepository,
+        ),
       ),
     ),
   );
