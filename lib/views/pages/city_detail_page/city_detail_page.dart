@@ -1,15 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:local_turism/commons/app_strings.dart';
-import 'package:local_turism/data/model/city_model.dart';
+import 'package:local_turism/data/models/city_model.dart';
 import 'package:local_turism/style/app_colors.dart';
 import 'package:local_turism/style/style.dart';
 import 'package:local_turism/views/pages/city_detail_page/widgets/city_fact_widget.dart';
 import 'package:local_turism/views/widgets/photo_widget.dart';
+import 'package:local_turism/views/widgets/temperature_widget.dart';
 
 class CityDetailPage extends StatefulWidget {
   final City city;
 
-  const CityDetailPage({super.key, required this.city});
+  const CityDetailPage({
+    super.key,
+    required this.city,
+  });
 
   static Key appBarKey = const Key('appBar');
   static Key cityFactKey = const Key('cityFact');
@@ -44,6 +48,9 @@ class _CityDetailPageState extends State<CityDetailPage> {
           widget.city.name,
           style: Style.appBarTextStyle,
         ),
+        actions: [
+          TemperatureWidget(woeid: widget.city.woeid),
+        ],
         centerTitle: true,
         backgroundColor: AppColors.white,
         elevation: 0,
