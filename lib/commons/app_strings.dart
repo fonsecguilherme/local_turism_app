@@ -5,4 +5,5 @@ class AppStrings {
   static const drawerMainScreenText = 'Tela principal';
   static const drawerAboutMeText = 'Quem sou eu?';
   static const drawerReferencesText = 'Referências usadas';
+  static const degreesCelsiusText = '℃';
 }
