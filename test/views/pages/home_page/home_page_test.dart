@@ -115,6 +115,7 @@ final List<City> _cities = [
     tags: [],
     cityFacts: [],
     extraImages: [],
+    woeid: 12345,
   ),
   City(
     id: 2,
@@ -130,5 +131,6 @@ final List<City> _cities = [
     tags: [],
     cityFacts: [],
     extraImages: [],
+    woeid: 12345,
   ),
 ];

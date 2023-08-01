@@ -46,4 +46,5 @@ City _city = City(
   tags: [],
   cityFacts: [],
   extraImages: [],
+  woeid: 12345,
 );

@@ -76,4 +76,5 @@ City city = City(
     "http://experimentemaceio.com.br/wp-content/uploads/2022/05/Foto-Davysson-Mendes-06-01-2022-Cadeira-de-Praia-Maceio-e-Massa-SEMTEL-3.jpg",
     "http://experimentemaceio.com.br/wp-content/uploads/2022/06/Museu-do-Comercio-e-Museu-da-Tecnologia-1.jpg"
   ],
+  woeid: 12345,
 );
