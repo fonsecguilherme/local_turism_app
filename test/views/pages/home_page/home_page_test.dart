@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:local_turism/commons/app_strings.dart';
-import 'package:local_turism/data/model/city_model.dart';
+import 'package:local_turism/data/models/city_model.dart';
 import 'package:local_turism/data/repository/city_repository.dart';
 import 'package:local_turism/views/pages/data_page/data_page.dart';
 import 'package:local_turism/views/pages/error_page/error_page.dart';

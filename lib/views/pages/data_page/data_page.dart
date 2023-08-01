@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:local_turism/data/model/city_model.dart';
+import 'package:local_turism/data/models/city_model.dart';
 import 'package:local_turism/views/pages/data_page/widgets/city_card.dart';
 
 class DataPage extends StatefulWidget {
