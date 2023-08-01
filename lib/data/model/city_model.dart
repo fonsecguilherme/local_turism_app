@@ -35,18 +35,19 @@ class City {
   final List<String> tags;
   final List<CityFact> cityFacts;
   final List<String> extraImages;
+  final int woeid;
 
-  City({
-    required this.id,
-    required this.cityKey,
-    required this.title,
-    required this.name,
-    required this.mainImages,
-    required this.cityDescription,
-    required this.tags,
-    required this.cityFacts,
-    required this.extraImages,
-  });
+  City(
+      {required this.id,
+      required this.cityKey,
+      required this.title,
+      required this.name,
+      required this.mainImages,
+      required this.cityDescription,
+      required this.tags,
+      required this.cityFacts,
+      required this.extraImages,
+      required this.woeid});
 
   factory City.fromRawJson(String str) => City.fromJson(json.decode(str));
 
@@ -63,6 +64,7 @@ class City {
         cityFacts: List<CityFact>.from(
             json["city_facts"].map((x) => CityFact.fromJson(x))),
         extraImages: List<String>.from(json["extra_images"].map((x) => x)),
+        woeid: json["woeid"],
       );
 
   Map<String, dynamic> toJson() => {
@@ -75,6 +77,7 @@ class City {
         "tags": List<dynamic>.from(tags.map((x) => x)),
         "city_facts": List<dynamic>.from(cityFacts.map((x) => x.toJson())),
         "extra_images": List<dynamic>.from(extraImages.map((x) => x)),
+        "woeid": woeid,
       };
 }
 
