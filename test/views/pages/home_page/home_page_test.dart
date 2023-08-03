@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:local_turism/commons/app_strings.dart';
-import 'package:local_turism/data/model/city_model.dart';
+import 'package:local_turism/data/models/city_model.dart';
 import 'package:local_turism/data/repository/city_repository.dart';
 import 'package:local_turism/views/pages/data_page/data_page.dart';
 import 'package:local_turism/views/pages/error_page/error_page.dart';
@@ -58,8 +58,8 @@ void main() {
   });
 
   testWidgets('Find loading page widget', (tester) async {
-    when(() => cityRepository.getAll()).thenAnswer(
-        (_) => Future.delayed(const Duration(seconds: 1), () => null));
+    when(() => cityRepository.getAll())
+        .thenAnswer((_) => Future.delayed(const Duration(seconds: 1)));
 
     await tester.pumpWidget(
       const MaterialApp(
@@ -115,6 +115,7 @@ final List<City> _cities = [
     tags: [],
     cityFacts: [],
     extraImages: [],
+    woeid: 12345,
   ),
   City(
     id: 2,
@@ -130,5 +131,6 @@ final List<City> _cities = [
     tags: [],
     cityFacts: [],
     extraImages: [],
+    woeid: 12345,
   ),
 ];

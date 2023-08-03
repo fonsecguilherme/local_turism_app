@@ -1,7 +1,7 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:local_turism/data/model/city_model.dart';
+import 'package:local_turism/data/models/city_model.dart';
 import 'package:local_turism/style/app_colors.dart';
 import 'package:local_turism/style/style.dart';
 import 'package:local_turism/views/widgets/photo_widget.dart';

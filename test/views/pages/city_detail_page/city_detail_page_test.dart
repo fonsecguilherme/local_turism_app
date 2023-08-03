@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:local_turism/data/model/city_model.dart';
+import 'package:local_turism/data/models/city_model.dart';
 import 'package:local_turism/views/pages/city_detail_page/city_detail_page.dart';
 import 'package:network_image_mock/network_image_mock.dart';
 
@@ -76,4 +76,5 @@ City city = City(
     "http://experimentemaceio.com.br/wp-content/uploads/2022/05/Foto-Davysson-Mendes-06-01-2022-Cadeira-de-Praia-Maceio-e-Massa-SEMTEL-3.jpg",
     "http://experimentemaceio.com.br/wp-content/uploads/2022/06/Museu-do-Comercio-e-Museu-da-Tecnologia-1.jpg"
   ],
+  woeid: 12345,
 );

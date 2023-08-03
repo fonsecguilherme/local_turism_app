@@ -17,6 +17,12 @@ class Style {
     fontWeight: FontWeight.w700,
   );
 
+  static const appBarTemperatureTextStyle = TextStyle(
+    color: AppColors.black,
+    fontSize: 16,
+    fontWeight: FontWeight.w600,
+  );
+
   static const bannerCityNameStyle = TextStyle(
     color: AppColors.white,
     fontSize: 32,

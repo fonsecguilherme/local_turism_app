@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:local_turism/commons/app_strings.dart';
-import 'package:local_turism/data/model/city_model.dart';
+import 'package:local_turism/data/models/city_model.dart';
 import 'package:local_turism/data/repository/city_repository.dart';
 import 'package:local_turism/style/style.dart';
 import 'package:local_turism/views/pages/data_page/data_page.dart';
@@ -37,15 +37,14 @@ class _HomePageWidgetState extends State<HomePageWidget> {
           child: FutureBuilder<CityModel?>(
             future: cities,
             builder: (context, snapshot) {
-              if (snapshot.hasError) {
-                return errorWidget();
-              } else if (snapshot.connectionState == ConnectionState.waiting) {
-                return const LoadingPage();
-              } else if (snapshot.hasData) {
+              if (snapshot.hasData) {
                 final citiesList = snapshot.data!.cities;
                 return DataPage(cities: citiesList);
+              } else if (snapshot.hasError) {
+                return errorWidget();
+              } else {
+                return const LoadingPage();
               }
-              return const SizedBox();
             },
           ),
         ),
