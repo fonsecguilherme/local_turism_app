@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:local_turism/commons/app_strings.dart';
 import 'package:local_turism/data/models/weather_model.dart';
 import 'package:local_turism/data/repository/weather_repository.dart';
-import 'package:local_turism/style/style.dart';
+import 'package:local_turism/views/pages/city_detail_page/widgets/city_temperature_widget.dart';
+import 'package:local_turism/views/pages/city_detail_page/widgets/loading_temperature_widget.dart';
 
 class TemperatureWidget extends StatefulWidget {
   final WeatherRepository _weatherRepository;
   final int woeid;
+
+  static const loadingWidgetKey = Key('loadingWidgetKey');
+  static const temperatureKey = Key('temperatureKey');
 
   TemperatureWidget(
       {super.key, WeatherRepository? weatherRepository, required this.woeid})
@@ -17,7 +20,7 @@ class TemperatureWidget extends StatefulWidget {
 }
 
 class _TemperatureWidgetState extends State<TemperatureWidget> {
-  late Future<CityWeatherModel> weatherData;
+  late Future<CityWeatherModel?> weatherData;
 
   @override
   void initState() {
@@ -33,29 +36,12 @@ class _TemperatureWidgetState extends State<TemperatureWidget> {
         builder: (context, snapshot) {
           if (snapshot.hasData) {
             final degrees = snapshot.data!.results.temp;
-            return _cityTemperature(degrees);
+            return CityTemperatureWidget(degrees: degrees);
           } else if (snapshot.hasError) {
             return const Icon(Icons.error_outline_rounded);
           } else {
-            return _loadingWidget();
+            return const LoadingTemperatureWidget();
           }
         },
-      );
-
-  Widget _cityTemperature(int degrees) => Padding(
-        padding: const EdgeInsets.only(right: 8.0),
-        child: Center(
-          child: Text(
-            '$degrees${AppStrings.degreesCelsiusText}',
-            style: Style.appBarTemperatureTextStyle,
-          ),
-        ),
-      );
-
-  Widget _loadingWidget() => const Padding(
-        padding: EdgeInsets.only(right: 8.0),
-        child: Center(
-          child: CircularProgressIndicator(),
-        ),
       );
 }

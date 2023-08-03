@@ -58,8 +58,8 @@ void main() {
   });
 
   testWidgets('Find loading page widget', (tester) async {
-    when(() => cityRepository.getAll()).thenAnswer(
-        (_) => Future.delayed(const Duration(seconds: 1), () => null));
+    when(() => cityRepository.getAll())
+        .thenAnswer((_) => Future.delayed(const Duration(seconds: 1)));
 
     await tester.pumpWidget(
       const MaterialApp(
