@@ -9,7 +9,7 @@ abstract class ICityRepository {
 }
 
 class CityRepository implements ICityRepository {
-  final IHttpClient client;
+  final HttpClient client;
 
   CityRepository({required this.client});
 

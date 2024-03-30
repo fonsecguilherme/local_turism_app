@@ -4,7 +4,7 @@ import 'package:local_turism/core/commons/app_strings.dart';
 import 'package:local_turism/domain/city_repository.dart';
 
 class ErrorPage extends StatefulWidget {
-  final CityRepository cityRepository;
+  final ICityRepository cityRepository;
 
   const ErrorPage({super.key, required this.cityRepository});
 

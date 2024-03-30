@@ -13,6 +13,6 @@ class HttpClient implements IHttpClient {
   Future get({
     required String url,
   }) async {
-    await client.get(Uri.parse(url));
+    return await client.get(Uri.parse(url));
   }
 }

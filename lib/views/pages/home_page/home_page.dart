@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import 'package:local_turism/core/commons/app_strings.dart';
 import 'package:local_turism/core/commons/style.dart';
 import 'package:local_turism/core/models/city_model.dart';
@@ -10,11 +9,15 @@ import 'package:local_turism/views/pages/loading_page/loading_page.dart';
 import 'package:local_turism/views/widgets/drawer_widget.dart';
 
 class HomePageWidget extends StatefulWidget {
-  final CityRepository _cityRepository;
+  final ICityRepository _cityRepository;
 
-  HomePageWidget({super.key, CityRepository? cityRepository})
-      : _cityRepository =
-            cityRepository ?? CityRepository(client: HttpClient());
+  HomePageWidget({
+    super.key,
+    ICityRepository? cityRepository,
+  }) : _cityRepository = cityRepository ??
+            CityRepository(
+              client: HttpClient(),
+            );
 
   @override
   State<HomePageWidget> createState() => _HomePageWidgetState();
@@ -26,6 +29,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
   @override
   void initState() {
     super.initState();
+    print(widget._cityRepository.runtimeType);
     cities = widget._cityRepository.getCities();
   }
 

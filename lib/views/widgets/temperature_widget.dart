@@ -12,9 +12,11 @@ class TemperatureWidget extends StatefulWidget {
   static const loadingWidgetKey = Key('loadingWidgetKey');
   static const temperatureKey = Key('temperatureKey');
 
-  TemperatureWidget(
-      {super.key, WeatherRepository? weatherRepository, required this.woeid})
-      : _weatherRepository = weatherRepository ??
+  TemperatureWidget({
+    super.key,
+    WeatherRepository? weatherRepository,
+    required this.woeid,
+  }) : _weatherRepository = weatherRepository ??
             WeatherRepository(
               client: HttpClient(),
             );
