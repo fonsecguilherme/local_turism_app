@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 import 'package:local_turism/core/models/city_model.dart';
 import 'package:local_turism/data/http_client.dart';
 import 'package:local_turism/data/http_exceptions.dart';
@@ -21,7 +19,7 @@ class CityRepository implements ICityRepository {
     final response = await client.get(url: url);
 
     if (response.statusCode == 200) {
-      return CityModel.fromJson(jsonDecode(response.body));
+      return CityModel.fromRawJson(response.body);
     } else if (response.statusCode == 404) {
       throw NotFoundException(message: 'URL is not valid');
     } else {
