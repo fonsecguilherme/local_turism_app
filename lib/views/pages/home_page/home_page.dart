@@ -29,7 +29,6 @@ class _HomePageWidgetState extends State<HomePageWidget> {
   @override
   void initState() {
     super.initState();
-    print(widget._cityRepository.runtimeType);
     cities = widget._cityRepository.getCities();
   }
 
