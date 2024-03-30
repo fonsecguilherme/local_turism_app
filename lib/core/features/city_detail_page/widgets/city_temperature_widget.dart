@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:local_turism/commons/app_strings.dart';
-import 'package:local_turism/style/style.dart';
+import 'package:local_turism/core/commons/app_strings.dart';
+import 'package:local_turism/core/commons/style.dart';
 
 class CityTemperatureWidget extends StatelessWidget {
   const CityTemperatureWidget({
