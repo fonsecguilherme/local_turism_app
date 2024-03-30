@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:local_turism/data/models/weather_model.dart';
-import 'package:local_turism/data/repository/weather_repository.dart';
-import 'package:local_turism/views/pages/city_detail_page/widgets/city_temperature_widget.dart';
-import 'package:local_turism/views/pages/city_detail_page/widgets/loading_temperature_widget.dart';
+import 'package:local_turism/core/features/city_detail_page/widgets/city_temperature_widget.dart';
+import 'package:local_turism/core/features/city_detail_page/widgets/loading_temperature_widget.dart';
+import 'package:local_turism/core/models/weather_model.dart';
+import 'package:local_turism/data/http_client.dart';
+import 'package:local_turism/domain/weather_repository.dart';
 
 class TemperatureWidget extends StatefulWidget {
   final WeatherRepository _weatherRepository;
@@ -13,7 +14,10 @@ class TemperatureWidget extends StatefulWidget {
 
   TemperatureWidget(
       {super.key, WeatherRepository? weatherRepository, required this.woeid})
-      : _weatherRepository = weatherRepository ?? WeatherRepository();
+      : _weatherRepository = weatherRepository ??
+            WeatherRepository(
+              client: HttpClient(),
+            );
 
   @override
   State<TemperatureWidget> createState() => _TemperatureWidgetState();

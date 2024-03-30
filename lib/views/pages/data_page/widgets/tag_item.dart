@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:local_turism/style/app_colors.dart';
-import 'package:local_turism/style/style.dart';
+import 'package:local_turism/core/commons/app_colors.dart';
+import 'package:local_turism/core/commons/style.dart';
 
 class TagItemWidget extends StatelessWidget {
   final List<String> tagsList;

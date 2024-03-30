@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:local_turism/commons/app_strings.dart';
+import 'package:local_turism/core/commons/app_strings.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class DrawerWidget extends StatelessWidget {

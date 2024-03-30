@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:local_turism/commons/app_strings.dart';
-import 'package:local_turism/data/models/city_model.dart';
-import 'package:local_turism/data/repository/city_repository.dart';
-import 'package:local_turism/style/style.dart';
+
+import 'package:local_turism/core/commons/app_strings.dart';
+import 'package:local_turism/core/commons/style.dart';
+import 'package:local_turism/core/models/city_model.dart';
+import 'package:local_turism/data/http_client.dart';
+import 'package:local_turism/domain/city_repository.dart';
 import 'package:local_turism/views/pages/data_page/data_page.dart';
 import 'package:local_turism/views/pages/loading_page/loading_page.dart';
 import 'package:local_turism/views/widgets/drawer_widget.dart';
@@ -11,7 +13,8 @@ class HomePageWidget extends StatefulWidget {
   final CityRepository _cityRepository;
 
   HomePageWidget({super.key, CityRepository? cityRepository})
-      : _cityRepository = cityRepository ?? CityRepository();
+      : _cityRepository =
+            cityRepository ?? CityRepository(client: HttpClient());
 
   @override
   State<HomePageWidget> createState() => _HomePageWidgetState();
@@ -23,7 +26,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
   @override
   void initState() {
     super.initState();
-    cities = widget._cityRepository.getAll();
+    cities = widget._cityRepository.getCities();
   }
 
   @override
@@ -72,7 +75,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
             ElevatedButton(
               onPressed: () {
                 setState(() {
-                  cities = widget._cityRepository.getAll();
+                  cities = widget._cityRepository.getCities();
                 });
               },
               style: ElevatedButton.styleFrom(
