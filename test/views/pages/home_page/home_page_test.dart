@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:local_turism/commons/app_strings.dart';
-import 'package:local_turism/data/models/city_model.dart';
-import 'package:local_turism/data/repository/city_repository.dart';
+import 'package:local_turism/core/commons/app_strings.dart';
+import 'package:local_turism/core/models/city_model.dart';
+import 'package:local_turism/domain/city_repository.dart';
 import 'package:local_turism/views/pages/data_page/data_page.dart';
 import 'package:local_turism/views/pages/error_page/error_page.dart';
 import 'package:local_turism/views/pages/home_page/home_page.dart';
@@ -21,7 +21,7 @@ void main() {
   });
 
   testWidgets('Find appBar drawer', (tester) async {
-    when(() => cityRepository.getAll()).thenAnswer((_) => Future.value());
+    when(() => cityRepository.getCities()).thenAnswer((_) => Future.value());
 
     await tester.pumpWidget(MaterialApp(
         home: Scaffold(
@@ -34,7 +34,7 @@ void main() {
   });
 
   testWidgets('Fin appbar text', (tester) async {
-    when(() => cityRepository.getAll()).thenAnswer((_) => Future.value());
+    when(() => cityRepository.getCities()).thenAnswer((_) => Future.value());
 
     await _createWidget(tester);
 
@@ -44,7 +44,7 @@ void main() {
   testWidgets('Find data page widget', (tester) async {
     final cityModel = CityModel(cities: _cities);
 
-    when(() => cityRepository.getAll()).thenAnswer(
+    when(() => cityRepository.getCities()).thenAnswer(
       (_) => Future.value(cityModel),
     );
 
@@ -58,7 +58,7 @@ void main() {
   });
 
   testWidgets('Find loading page widget', (tester) async {
-    when(() => cityRepository.getAll())
+    when(() => cityRepository.getCities())
         .thenAnswer((_) => Future.delayed(const Duration(seconds: 1)));
 
     await tester.pumpWidget(
@@ -73,7 +73,7 @@ void main() {
   });
 
   testWidgets('Test error screen widget', (tester) async {
-    when(() => cityRepository.getAll()).thenThrow(Exception());
+    when(() => cityRepository.getCities()).thenThrow(Exception());
 
     await tester.pumpWidget(
       MaterialApp(

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:local_turism/commons/app_strings.dart';
+import 'package:local_turism/core/commons/app_strings.dart';
 import 'package:local_turism/views/widgets/drawer_widget.dart';
 
 void main() {
