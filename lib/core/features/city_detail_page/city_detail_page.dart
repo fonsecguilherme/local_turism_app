@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:local_turism/core/commons/app_strings.dart';
+import 'package:local_turism/core/features/widgets/custom_app_bar.dart';
 import 'package:local_turism/core/models/city_model.dart';
-import 'package:local_turism/core/commons/app_colors.dart';
 import 'package:local_turism/core/commons/style.dart';
 import 'package:local_turism/core/features/city_detail_page/widgets/city_fact_widget.dart';
-import 'package:local_turism/views/widgets/photo_widget.dart';
-import 'package:local_turism/views/widgets/temperature_widget.dart';
+import 'package:local_turism/core/features/widgets/photo_widget.dart';
+import 'package:local_turism/core/features/widgets/temperature_widget.dart';
 
 class CityDetailPage extends StatefulWidget {
   final City city;
@@ -36,25 +36,17 @@ class _CityDetailPageState extends State<CityDetailPage> {
     return Scaffold(
       appBar: PreferredSize(
         preferredSize: const Size.fromHeight(kToolbarHeight),
-        child: _appBar(),
+        child: CustomAppBarWidget(
+          title: widget.city.name,
+          actions: [
+            TemperatureWidget(woeid: widget.city.woeid),
+          ],
+        ),
       ),
       body: _body(),
     );
   }
 
-  Widget _appBar() => AppBar(
-        key: CityDetailPage.appBarKey,
-        title: Text(
-          widget.city.name,
-          style: Style.appBarTextStyle,
-        ),
-        actions: [
-          TemperatureWidget(woeid: widget.city.woeid),
-        ],
-        centerTitle: true,
-        backgroundColor: AppColors.white,
-        elevation: 0,
-      );
 
   Widget _body() => SafeArea(
         child: IndexedStack(
