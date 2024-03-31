@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:local_turism/commons/app_strings.dart';
-import 'package:local_turism/data/repository/city_repository.dart';
+import 'package:local_turism/core/commons/app_strings.dart';
+import 'package:local_turism/domain/city_repository.dart';
 
 class ErrorPage extends StatefulWidget {
-  final CityRepository cityRepository;
+  final ICityRepository cityRepository;
 
   const ErrorPage({super.key, required this.cityRepository});
 
@@ -24,7 +24,7 @@ class _ErrorPageState extends State<ErrorPage> {
           ElevatedButton(
             onPressed: () {
               setState(() {
-                widget.cityRepository.getAll();
+                widget.cityRepository.getCities();
                 context.goNamed('/');
               });
             },

@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:local_turism/data/models/weather_model.dart';
-import 'package:local_turism/data/repository/weather_repository.dart';
-import 'package:local_turism/views/pages/city_detail_page/widgets/city_temperature_widget.dart';
-import 'package:local_turism/views/pages/city_detail_page/widgets/loading_temperature_widget.dart';
-import 'package:local_turism/views/widgets/temperature_widget.dart';
+import 'package:local_turism/core/commons/app_strings.dart';
+import 'package:local_turism/core/features/city_detail_page/widgets/city_temperature_widget.dart';
+import 'package:local_turism/core/features/city_detail_page/widgets/loading_temperature_widget.dart';
+import 'package:local_turism/core/features/widgets/temperature_widget.dart';
+import 'package:local_turism/core/models/weather_model.dart';
+import 'package:local_turism/domain/weather_repository.dart';
 import 'package:mocktail/mocktail.dart';
-import 'package:local_turism/commons/app_strings.dart';
 
 class MockWeatherRepository extends Mock implements WeatherRepository {}
 
@@ -81,7 +81,7 @@ void main() {
 
 Future<void> _createWidget(WidgetTester tester) async {
   await tester.pumpWidget(
-    MaterialApp(
+    const MaterialApp(
       home: TemperatureWidget(
         woeid: 455827,
       ),
