@@ -4,7 +4,7 @@ import 'package:go_router/go_router.dart';
 import 'package:local_turism/core/models/city_model.dart';
 import 'package:local_turism/core/commons/app_colors.dart';
 import 'package:local_turism/core/commons/style.dart';
-import 'package:local_turism/views/widgets/photo_widget.dart';
+import 'package:local_turism/core/features/widgets/photo_widget.dart';
 
 class PhotoCarouselWidget extends StatefulWidget {
   final City city;
