@@ -44,8 +44,11 @@ class _HomePageWidgetState extends State<HomePageWidget> {
         ),
         body: SafeArea(
           child: AnimatedBuilder(
-            animation:
-                Listenable.merge([store.isLoading, store.state, store.error]),
+            animation: Listenable.merge([
+              store.isLoading,
+              store.state,
+              store.error,
+            ]),
             builder: (context, child) {
               if (store.isLoading.value) {
                 return const Center(

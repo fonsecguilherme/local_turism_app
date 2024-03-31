@@ -1,52 +1,53 @@
 import 'package:flutter/material.dart';
+import 'package:local_turism/core/features/city_detail_page/stores/city_detail_store.dart';
 import 'package:local_turism/core/features/city_detail_page/widgets/city_temperature_widget.dart';
-import 'package:local_turism/core/features/city_detail_page/widgets/loading_temperature_widget.dart';
-import 'package:local_turism/core/models/weather_model.dart';
 import 'package:local_turism/data/http_client.dart';
 import 'package:local_turism/domain/weather_repository.dart';
 
 class TemperatureWidget extends StatefulWidget {
-  final WeatherRepository _weatherRepository;
   final int woeid;
 
   static const loadingWidgetKey = Key('loadingWidgetKey');
   static const temperatureKey = Key('temperatureKey');
 
-  TemperatureWidget({
+  const TemperatureWidget({
     super.key,
     WeatherRepository? weatherRepository,
     required this.woeid,
-  }) : _weatherRepository = weatherRepository ??
-            WeatherRepository(
-              client: HttpClient(),
-            );
+  });
 
   @override
   State<TemperatureWidget> createState() => _TemperatureWidgetState();
 }
 
 class _TemperatureWidgetState extends State<TemperatureWidget> {
-  late Future<CityWeatherModel?> weatherData;
+  final CityDetailStore store = CityDetailStore(
+    repository: WeatherRepository(
+      client: HttpClient(),
+    ),
+  );
 
   @override
   void initState() {
     super.initState();
-    weatherData = widget._weatherRepository.getCityWeather(
-      woeid: widget.woeid,
-    );
+    store.getCityWeather(woeid: widget.woeid);
   }
 
   @override
-  Widget build(BuildContext context) => FutureBuilder<CityWeatherModel?>(
-        future: weatherData,
-        builder: (context, snapshot) {
-          if (snapshot.hasData) {
-            final degrees = snapshot.data!.results.temp;
-            return CityTemperatureWidget(degrees: degrees);
-          } else if (snapshot.hasError) {
-            return const Icon(Icons.error_outline_rounded);
+  Widget build(BuildContext context) => AnimatedBuilder(
+        animation: Listenable.merge([
+          store.isLoading,
+          store.error,
+          store.state,
+        ]),
+        builder: (context, child) {
+          if (store.isLoading.value) {
+            return const Center(child: CircularProgressIndicator());
+          } else if (store.error.value.isNotEmpty) {
+            return const Text('X');
           } else {
-            return const LoadingTemperatureWidget();
+            final degrees = store.state.value?.results.temp ?? 0;
+            return CityTemperatureWidget(degrees: degrees);
           }
         },
       );
