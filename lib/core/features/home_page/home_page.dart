@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:local_turism/core/commons/app_strings.dart';
-import 'package:local_turism/core/commons/style.dart';
 import 'package:local_turism/core/features/home_page/stores/home_page_store.dart';
+import 'package:local_turism/core/features/home_page/widgets/success_widget.dart';
+import 'package:local_turism/core/features/widgets/custom_app_bar.dart';
+import 'package:local_turism/core/features/widgets/drawer_widget.dart';
 import 'package:local_turism/core/models/city_model.dart';
 import 'package:local_turism/data/http_client.dart';
 import 'package:local_turism/domain/city_repository.dart';
-import 'package:local_turism/views/pages/data_page/data_page.dart';
-import 'package:local_turism/views/pages/loading_page/loading_page.dart';
-import 'package:local_turism/core/features/widgets/drawer_widget.dart';
 
 class HomePageWidget extends StatefulWidget {
   final ICityRepository _cityRepository;
@@ -39,9 +38,9 @@ class _HomePageWidgetState extends State<HomePageWidget> {
   @override
   Widget build(BuildContext context) => Scaffold(
         drawer: DrawerWidget(),
-        appBar: PreferredSize(
-          preferredSize: const Size.fromHeight(kToolbarHeight),
-          child: _appBar(),
+        appBar: const PreferredSize(
+          preferredSize: Size.fromHeight(kToolbarHeight),
+          child: CustomAppBarWidget(title: AppStrings.appBarText),
         ),
         body: SafeArea(
           child: AnimatedBuilder(
@@ -49,28 +48,22 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                 Listenable.merge([store.isLoading, store.state, store.error]),
             builder: (context, child) {
               if (store.isLoading.value) {
-                return const LoadingPage();
+                return const Center(
+                  child: CircularProgressIndicator(),
+                );
               } else if (store.error.value.isNotEmpty) {
                 Center(
                   child: errorWidget(),
                 );
               } else {
-                return DataPage(cities: store.state.value.cities);
+                return SuccessWidget(
+                  cities: store.state.value.cities,
+                );
               }
               return const SizedBox();
             },
           ),
         ),
-      );
-
-  Widget _appBar() => AppBar(
-        title: const Text(
-          AppStrings.appBarText,
-          style: Style.appBarTextStyle,
-        ),
-        centerTitle: true,
-        backgroundColor: Colors.white,
-        elevation: 0,
       );
 
   Widget errorWidget() => Center(
