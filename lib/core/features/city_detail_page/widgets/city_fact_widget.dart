@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:local_turism/core/models/city_model.dart';
+import 'package:local_turism/data/models/city_model.dart';
 import 'package:local_turism/core/commons/app_colors.dart';
 import 'package:local_turism/core/commons/style.dart';
 import 'package:local_turism/core/features/widgets/photo_widget.dart';

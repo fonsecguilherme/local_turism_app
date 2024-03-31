@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:local_turism/core/commons/app_strings.dart';
 import 'package:local_turism/core/features/widgets/custom_app_bar.dart';
-import 'package:local_turism/core/models/city_model.dart';
+import 'package:local_turism/data/models/city_model.dart';
 import 'package:local_turism/core/commons/style.dart';
 import 'package:local_turism/core/features/city_detail_page/widgets/city_fact_widget.dart';
 import 'package:local_turism/core/features/widgets/photo_widget.dart';
-import 'package:local_turism/core/features/widgets/temperature_widget.dart';
+import 'package:local_turism/core/features/city_detail_page/widgets/temperature_widget.dart';
 
 class CityDetailPage extends StatefulWidget {
   final City city;

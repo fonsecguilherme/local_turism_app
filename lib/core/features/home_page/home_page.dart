@@ -4,7 +4,7 @@ import 'package:local_turism/core/features/home_page/stores/home_page_store.dart
 import 'package:local_turism/core/features/home_page/widgets/success_widget.dart';
 import 'package:local_turism/core/features/widgets/custom_app_bar.dart';
 import 'package:local_turism/core/features/widgets/drawer_widget.dart';
-import 'package:local_turism/core/models/city_model.dart';
+import 'package:local_turism/data/models/city_model.dart';
 import 'package:local_turism/data/http_client.dart';
 import 'package:local_turism/domain/city_repository.dart';
 

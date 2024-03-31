@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:local_turism/core/commons/app_colors.dart';
 import 'package:local_turism/core/commons/app_strings.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -21,7 +22,7 @@ class DrawerWidget extends StatelessWidget {
         children: [
           const DrawerHeader(
             decoration: BoxDecoration(
-              color: Colors.blue,
+              color: AppColors.blue,
             ),
             child: Text('References'),
           ),

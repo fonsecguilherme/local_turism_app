@@ -1,6 +1,6 @@
 import 'package:go_router/go_router.dart';
 import 'package:local_turism/core/features/city_detail_page/city_detail_page.dart';
-import 'package:local_turism/core/models/city_model.dart';
+import 'package:local_turism/data/models/city_model.dart';
 import 'package:local_turism/data/http_client.dart';
 import 'package:local_turism/domain/city_repository.dart';
 import 'package:local_turism/core/features/widgets/error_page.dart';
