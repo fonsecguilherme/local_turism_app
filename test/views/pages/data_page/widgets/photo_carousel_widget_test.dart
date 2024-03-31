@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:local_turism/core/models/city_model.dart';
-import 'package:local_turism/views/pages/data_page/widgets/photo_carousel_widget.dart';
+import 'package:local_turism/core/features/home_page/widgets/photo_carousel_widget.dart';
 import 'package:network_image_mock/network_image_mock.dart';
 
 void main() {
