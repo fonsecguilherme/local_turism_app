@@ -47,7 +47,6 @@ class _CityDetailPageState extends State<CityDetailPage> {
     );
   }
 
-
   Widget _body() => SafeArea(
         child: IndexedStack(
           index: _index,
