@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:local_turism/core/models/city_model.dart';
+import 'package:local_turism/data/models/city_model.dart';
 import 'package:local_turism/data/http_exceptions.dart';
 import 'package:local_turism/domain/city_repository.dart';
 

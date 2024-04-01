@@ -3,8 +3,8 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:local_turism/core/commons/app_strings.dart';
 import 'package:local_turism/core/features/city_detail_page/widgets/city_temperature_widget.dart';
 import 'package:local_turism/core/features/city_detail_page/widgets/loading_temperature_widget.dart';
-import 'package:local_turism/core/features/widgets/temperature_widget.dart';
-import 'package:local_turism/core/models/weather_model.dart';
+import 'package:local_turism/core/features/city_detail_page/widgets/temperature_widget.dart';
+import 'package:local_turism/data/models/weather_model.dart';
 import 'package:local_turism/domain/weather_repository.dart';
 import 'package:mocktail/mocktail.dart';
 

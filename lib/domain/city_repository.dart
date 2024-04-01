@@ -1,4 +1,4 @@
-import 'package:local_turism/core/models/city_model.dart';
+import 'package:local_turism/data/models/city_model.dart';
 import 'package:local_turism/data/http_client.dart';
 import 'package:local_turism/data/http_exceptions.dart';
 
