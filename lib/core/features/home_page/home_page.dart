@@ -1,38 +1,34 @@
 import 'package:flutter/material.dart';
+import 'package:get_it/get_it.dart';
 import 'package:local_turism/core/commons/app_strings.dart';
 import 'package:local_turism/core/features/home_page/stores/home_page_store.dart';
 import 'package:local_turism/core/features/home_page/widgets/success_widget.dart';
 import 'package:local_turism/core/features/widgets/custom_app_bar.dart';
 import 'package:local_turism/core/features/widgets/drawer_widget.dart';
-import 'package:local_turism/data/models/city_model.dart';
-import 'package:local_turism/data/http_client.dart';
-import 'package:local_turism/domain/city_repository.dart';
 
 class HomePageWidget extends StatefulWidget {
-  final ICityRepository _cityRepository;
 
-  HomePageWidget({
+  const HomePageWidget({
     super.key,
-    ICityRepository? cityRepository,
-  }) : _cityRepository = cityRepository ??
-            CityRepository(
-              client: HttpClient(),
-            );
+  });
 
   @override
   State<HomePageWidget> createState() => _HomePageWidgetState();
 }
 
 class _HomePageWidgetState extends State<HomePageWidget> {
-  late Future<CityModel?> cities;
-
-  final HomePageStore store =
-      HomePageStore(repository: CityRepository(client: HttpClient()));
+  late HomePageStore store;
 
   @override
   void initState() {
     super.initState();
-    store.getCities();
+    final getIt = GetIt.instance;
+
+    store = getIt<HomePageStore>();
+
+    WidgetsBinding.instance.addPostFrameCallback((_) async {
+      await store.getCities();
+    });
   }
 
   @override
@@ -79,11 +75,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
             ),
             const SizedBox(height: 12),
             ElevatedButton(
-              onPressed: () {
-                setState(() {
-                  cities = widget._cityRepository.getCities();
-                });
-              },
+              onPressed: () {},
               style: ElevatedButton.styleFrom(
                 shape: const CircleBorder(),
                 padding: const EdgeInsets.all(8),

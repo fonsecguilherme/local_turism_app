@@ -7,9 +7,9 @@ abstract class ICityRepository {
 }
 
 class CityRepository implements ICityRepository {
-  final HttpClient client;
+  final IHttpClient client;
 
-  CityRepository({required this.client});
+  const CityRepository({required this.client});
 
   @override
   Future<CityModel?> getCities() async {

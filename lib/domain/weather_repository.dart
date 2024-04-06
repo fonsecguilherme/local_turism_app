@@ -1,6 +1,6 @@
-import 'package:local_turism/data/models/weather_model.dart';
 import 'package:local_turism/data/http_client.dart';
 import 'package:local_turism/data/http_exceptions.dart';
+import 'package:local_turism/data/models/weather_model.dart';
 
 abstract class IWeatherRepository {
   Future<CityWeatherModel?> getCityWeather({
