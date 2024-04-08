@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:get_it/get_it.dart';
 import 'package:local_turism/core/features/city_detail_page/stores/city_detail_store.dart';
 import 'package:local_turism/core/features/city_detail_page/widgets/city_temperature_widget.dart';
-import 'package:local_turism/data/http_client.dart';
 import 'package:local_turism/domain/weather_repository.dart';
 
 class TemperatureWidget extends StatefulWidget {
@@ -21,15 +21,15 @@ class TemperatureWidget extends StatefulWidget {
 }
 
 class _TemperatureWidgetState extends State<TemperatureWidget> {
-  final CityDetailStore store = CityDetailStore(
-    repository: WeatherRepository(
-      client: HttpClient(),
-    ),
-  );
+  late CityDetailStore store;
 
   @override
   void initState() {
     super.initState();
+    final getIt = GetIt.instance;
+
+    store = getIt<CityDetailStore>();
+
     store.getCityWeather(woeid: widget.woeid);
   }
 
@@ -42,7 +42,9 @@ class _TemperatureWidgetState extends State<TemperatureWidget> {
         ]),
         builder: (context, child) {
           if (store.isLoading.value) {
-            return const Center(child: CircularProgressIndicator());
+            return const Center(
+              child: CircularProgressIndicator(),
+            );
           } else if (store.error.value.isNotEmpty) {
             return const Text('X');
           } else {

@@ -1,14 +1,7 @@
 import 'package:go_router/go_router.dart';
 import 'package:local_turism/core/features/city_detail_page/city_detail_page.dart';
-import 'package:local_turism/data/models/city_model.dart';
-import 'package:local_turism/data/http_client.dart';
-import 'package:local_turism/domain/city_repository.dart';
-import 'package:local_turism/core/features/widgets/error_page.dart';
 import 'package:local_turism/core/features/home_page/home_page.dart';
-
-final ICityRepository cityRepository = CityRepository(
-  client: HttpClient(),
-);
+import 'package:local_turism/data/models/city_model.dart';
 
 final GoRouter router = GoRouter(
   initialLocation: '/',
@@ -16,7 +9,7 @@ final GoRouter router = GoRouter(
     GoRoute(
       path: '/',
       builder: (context, state) {
-        return HomePageWidget();
+        return const HomePageWidget();
       },
       routes: [
         GoRoute(
@@ -27,12 +20,6 @@ final GoRouter router = GoRouter(
           },
         ),
       ],
-    ),
-    GoRoute(
-      path: '/errorPage',
-      builder: (context, state) {
-        return ErrorPage(cityRepository: cityRepository);
-      },
     ),
   ],
 );
