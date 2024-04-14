@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:get_it/get_it.dart';
 import 'package:local_turism/core/commons/app_strings.dart';
 import 'package:local_turism/core/features/home_page/stores/home_page_store.dart';
 import 'package:local_turism/core/features/home_page/widgets/success_widget.dart';
 import 'package:local_turism/core/features/widgets/custom_app_bar.dart';
 import 'package:local_turism/core/features/widgets/drawer_widget.dart';
+import 'package:local_turism/service_locator.dart';
 
 class HomePageWidget extends StatefulWidget {
-
   const HomePageWidget({
     super.key,
   });
@@ -22,9 +21,8 @@ class _HomePageWidgetState extends State<HomePageWidget> {
   @override
   void initState() {
     super.initState();
-    final getIt = GetIt.instance;
 
-    store = getIt<HomePageStore>();
+    store = ServiceLocator.instance.get<HomePageStore>();
 
     WidgetsBinding.instance.addPostFrameCallback((_) async {
       await store.getCities();
