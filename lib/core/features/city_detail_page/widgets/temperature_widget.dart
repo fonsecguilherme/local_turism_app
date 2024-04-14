@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:get_it/get_it.dart';
 import 'package:local_turism/core/features/city_detail_page/stores/city_detail_store.dart';
 import 'package:local_turism/core/features/city_detail_page/widgets/city_temperature_widget.dart';
 import 'package:local_turism/domain/weather_repository.dart';
+import 'package:local_turism/service_locator.dart';
 
 class TemperatureWidget extends StatefulWidget {
   final int woeid;
@@ -26,12 +26,15 @@ class _TemperatureWidgetState extends State<TemperatureWidget> {
   @override
   void initState() {
     super.initState();
-    final getIt = GetIt.instance;
 
-    store = getIt<CityDetailStore>();
+    store = ServiceLocator.instance.get<CityDetailStore>();
 
     store.getCityWeather(woeid: widget.woeid);
   }
+
+  //! criar a classes states tatno da tela home
+  //! quanto dessa classe aqui. Porque dá pra usar como se fosse no bloc
+  //! se o estadofor tal, eu retorno determinado widget
 
   @override
   Widget build(BuildContext context) => AnimatedBuilder(
