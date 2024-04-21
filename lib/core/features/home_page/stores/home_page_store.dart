@@ -1,35 +1,28 @@
 import 'package:flutter/material.dart';
-import 'package:local_turism/data/models/city_model.dart';
+import 'package:local_turism/core/features/home_page/home_page_state.dart';
 import 'package:local_turism/data/http_exceptions.dart';
 import 'package:local_turism/domain/city_repository.dart';
 
-class HomePageStore {
+class HomePageStore extends ValueNotifier<HomePageState> {
   final ICityRepository repository;
 
   HomePageStore({
     required this.repository,
-  });
-
-  final ValueNotifier<bool> isLoading = ValueNotifier(false);
-  final ValueNotifier<CityModel> state =
-      ValueNotifier<CityModel>(CityModel(cities: []));
-  final ValueNotifier<String> error = ValueNotifier<String>('');
+  }) : super(LoadingHomePageState());
 
   Future getCities() async {
-    isLoading.value = true;
-
     try {
       final result = await repository.getCities();
 
       if (result != null) {
-        state.value = result;
+        value = FetchedHomePagestate(
+          cities: result.cities,
+        );
       }
     } on NotFoundException catch (e) {
-      error.value = e.message;
+      value = ErrorHomePageState(errorMessage: e.message);
     } catch (e) {
-      error.value = e.toString();
+      value = ErrorHomePageState(errorMessage: e.toString());
     }
-
-    isLoading.value = false;
   }
 }

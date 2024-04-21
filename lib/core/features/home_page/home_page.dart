@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:local_turism/core/commons/app_strings.dart';
+import 'package:local_turism/core/features/home_page/home_page_state.dart';
 import 'package:local_turism/core/features/home_page/stores/home_page_store.dart';
 import 'package:local_turism/core/features/home_page/widgets/success_widget.dart';
 import 'package:local_turism/core/features/widgets/custom_app_bar.dart';
@@ -37,43 +38,35 @@ class _HomePageWidgetState extends State<HomePageWidget> {
           child: CustomAppBarWidget(title: AppStrings.appBarText),
         ),
         body: SafeArea(
-          child: AnimatedBuilder(
-            animation: Listenable.merge([
-              store.isLoading,
-              store.state,
-              store.error,
-            ]),
-            builder: (context, child) {
-              if (store.isLoading.value) {
-                return const Center(
-                  child: CircularProgressIndicator(),
-                );
-              } else if (store.error.value.isNotEmpty) {
-                Center(
-                  child: errorWidget(),
-                );
-              } else {
-                return SuccessWidget(
-                  cities: store.state.value.cities,
-                );
-              }
-              return const SizedBox();
-            },
-          ),
-        ),
+            child: ValueListenableBuilder(
+          valueListenable: store,
+          builder: (context, value, child) {
+            if (value is ErrorHomePageState) {
+              return errorWidget(value.errorMessage);
+            } else if (value is FetchedHomePagestate) {
+              return SuccessWidget(cities: value.cities);
+            } else {
+              return const Center(
+                child: CircularProgressIndicator(),
+              );
+            }
+          },
+        )),
       );
 
-  Widget errorWidget() => Center(
+  Widget errorWidget(String message) => Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            const Text(
-              AppStrings.errorMessage,
+            Text(
+              message,
               textAlign: TextAlign.center,
             ),
             const SizedBox(height: 12),
             ElevatedButton(
-              onPressed: () {},
+              onPressed: () {
+                store.getCities();
+              },
               style: ElevatedButton.styleFrom(
                 shape: const CircleBorder(),
                 padding: const EdgeInsets.all(8),
